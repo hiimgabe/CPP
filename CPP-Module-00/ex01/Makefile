@@ -1,10 +1,10 @@
-NAME 	= megaphone
-SRC 	= 
-INC		= 
-OBJ 	= ${SRC:.cpp=.o}
+NAME 	= phonebook
+OBJ_DIR	= bin
+SRC_DIR	= source
+INC		= include/
+SRC 	= ${wildcard ${SRC_DIR}/*.cpp}
+OBJ 	= ${patsubst ${SRC_DIR}/%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
-CC 		= g++
-RM 		= rm -f
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 GREEN	= \033[38;5;47m
@@ -12,22 +12,26 @@ YELLOW	= \033[38;5;226m
 RED		= \033[38;5;196m
 END 	= \033[0m
 
-.cpp.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}
-	@echo "${GREEN}compiling${END}: $<"
-
-${NAME}: ${OBJ}
-	@${CC} ${OBJ} -o ${NAME}
-	@echo "${GREEN}${NAME} created${END}"
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp | ${OBJ_DIR}
+	@c++ ${FLAGS} -g -c $< -o $@
+	@echo "[${GREEN}compiling${END}]: $<"
 
 all: ${NAME}
 
+${OBJ_DIR}:
+	@mkdir bin/
+	@echo "${GREEN}bin created${END}"
+
+${NAME}: ${OBJ}
+	@c++ ${FLAGS} -I ${INC} ${OBJ} -o ${NAME}
+	@echo "${GREEN}${NAME} executable created${END}"
+
 clean:
-	@${RM} ${OBJ}
+	@rm -rf ${OBJ_DIR}
 	@echo "${RED}cleaning objects${END}"
 
 fclean: clean
-	@${RM} ${NAME}
+	@rm ${NAME}
 	@echo "${RED}${NAME} deleted${END}"
 
 re: fclean all

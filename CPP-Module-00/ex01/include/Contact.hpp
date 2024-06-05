@@ -6,12 +6,12 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:42:22 by gabe              #+#    #+#             */
-/*   Updated: 2024/06/04 15:49:01 by gabe             ###   ########.fr       */
+/*   Updated: 2024/06/05 12:23:45 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef CONTACT_H
+#define CONTACT_H
 
 #include <iostream>
 

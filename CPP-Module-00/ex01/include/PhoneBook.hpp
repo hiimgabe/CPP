@@ -6,16 +6,21 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:37:29 by gabe              #+#    #+#             */
-/*   Updated: 2024/06/04 15:49:10 by gabe             ###   ########.fr       */
+/*   Updated: 2024/06/05 16:36:23 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef PHONEBOOK_H
+#define PHONEBOOK_H
 
 #include "Contact.hpp"
-#include <iostream>
+#include <iomanip>
 
+#define RED "\033[38;5;196m"
+#define YELLOW "\033[38;5;226m"
+#define GREEN "\033[38;5;47m"
+#define RESET "\033[0m"
+#define CLEAR "\033[2J\033[H"
 
 class PhoneBook
 {
@@ -26,7 +31,8 @@ class PhoneBook
 		void	addContact(void);
 		void	searchContact(void);
 		
-		static void	printManual(void);
+		static void	printInstructions(void);
+		static void	printError(std::string error);
 	
 	private:
 		Contact _contacts[8];
