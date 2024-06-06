@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:42:22 by gabe              #+#    #+#             */
-/*   Updated: 2024/06/05 12:23:45 by gabe             ###   ########.fr       */
+/*   Updated: 2024/06/06 11:30:20 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #define CONTACT_H
 
 #include <iostream>
+#include <iomanip>
+#include <limits>
+
+#define RED "\033[38;5;196m"
+#define YELLOW "\033[38;5;226m"
+#define GREEN "\033[38;5;47m"
+#define RESET "\033[0m"
+#define CLEAR "\033[2J\033[H"
 
 class Contact
 {

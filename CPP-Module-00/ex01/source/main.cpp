@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:43:31 by gabe              #+#    #+#             */
-/*   Updated: 2024/06/05 12:57:46 by gabe             ###   ########.fr       */
+/*   Updated: 2024/06/06 12:00:48 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	main(void)
 		std::cout << YELLOW << "Input action > ";
 		if (!std::getline(std::cin, cmd, '\n'))
 			return (PhoneBook::printError("EOF"), EXIT_FAILURE);
-		if (cmd == "ADD" || cmd == "add")
+		if (cmd == "ADD")
 			phonebook.addContact();
-		else if (cmd == "SEARCH" || cmd == "search")
+		else if (cmd == "SEARCH")
 			phonebook.searchContact();
-		else if (cmd == "EXIT" || cmd == "exit")
+		else if (cmd == "EXIT")
 			break ;
 		else
 		{
