@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/02 14:30:54 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/23 12:44:53 by gabe             ###   ########.fr       */
+/*   Created: 2024/07/23 13:00:16 by gabe              #+#    #+#             */
+/*   Updated: 2024/07/23 13:33:37 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-#define ZOMBIE_H
+#include "../include/HumanA.hpp"
 
-#include <iostream>
+HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon) {}
 
-class Zombie
+HumanA::~HumanA(void) { std::cout << "Human A destroyed." << std::endl; }
+
+void	HumanA::attack(void)
 {
-	public:
-		Zombie(void);
-		~Zombie(void);
-
-		Zombie(std::string name);
-		void	announce(void);
-		void	set_name(std::string name);
-		
-	private:
-		std::string _name;
-};
-
-Zombie* newZombie(std::string name);
-void	randomChump(std::string name);
-Zombie*	zombieHorde(int N, std::string name);
-
-
-#endif
+	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
+}
