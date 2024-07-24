@@ -1,4 +1,4 @@
-NAME 	= sandr
+NAME 	= harl
 SRC 	= ${wildcard *.cpp}
 OBJ 	= ${SRC:.cpp=.o}
 
