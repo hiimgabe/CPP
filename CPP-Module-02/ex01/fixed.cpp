@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:25:59 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/06 15:54:31 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/06 16:08:47 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ Fixed::Fixed(const float value)
 }
 
 //	copy constructor
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed& other) : _fixed_point(other._fixed_point)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = other;
 }
 
 //	copy assignment operator
