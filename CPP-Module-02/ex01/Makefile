@@ -1,4 +1,4 @@
-NAME 	= first_ocf
+NAME 	= fixed
 SRC 	= ${wildcard *.cpp}
 OBJ 	= ${SRC:.cpp=.o}
 

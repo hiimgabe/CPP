@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:25:59 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/10 11:26:51 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/10 11:31:50 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,102 @@ std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 {
 	os << fixed.toFloat();
 	return (os);
+}
+
+// + - * / == != > >= < <=
+
+Fixed Fixed::operator+(const Fixed &other) const 
+{
+	return Fixed(this->toFloat() + other.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed &other) const 
+{
+	return Fixed(this->toFloat() - other.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed &other) const 
+{
+	return Fixed(this->toFloat() * other.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &other) const 
+{
+	return Fixed(this->toFloat() / other.toFloat());
+}
+
+bool Fixed::operator==(const Fixed &other) const
+{
+	return this->_fixed_point == other._fixed_point;
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	return this->_fixed_point != other._fixed_point;
+}
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	return this->_fixed_point > other._fixed_point;
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	return this->_fixed_point >= other._fixed_point;
+}
+
+bool Fixed::operator<(const Fixed &other) const
+{
+	return this->_fixed_point < other._fixed_point;
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	return this->_fixed_point <= other._fixed_point;
+}
+
+Fixed &Fixed::operator++()
+{
+	this->_fixed_point += 1;
+	return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp = *this;
+	this->_fixed_point += 1;
+	return temp;
+}
+
+Fixed &Fixed::operator--()
+{
+	this->_fixed_point -= 1;
+	return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp = *this;
+	this->_fixed_point -= 1;
+	return temp;
+}
+
+Fixed Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b) ? a : b;
+}
+
+Fixed Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a > b) ? a : b;
+}
+
+Fixed Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a < b) ? a : b;
+}
+
+Fixed Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a < b) ? a : b;
 }
