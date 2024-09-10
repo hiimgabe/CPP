@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fixed.hpp                                          :+:      :+:    :+:   */
+/*   BSP.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 15:17:07 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/10 18:58:20 by gabe             ###   ########.fr       */
+/*   Created: 2024/09/10 19:40:55 by gabe              #+#    #+#             */
+/*   Updated: 2024/09/10 20:36:04 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-#define FIXED_H
+#include "../include/Point.hpp"
 
-#include <iostream>
-
-class Fixed
+bool bsp(Point const a, Point const b, Point const c, Point const p)
 {
-public:
-	//	default constructor
-	Fixed();
-	//	copy constructor
-	Fixed(const Fixed &other);
-	//	copy assignment operator
-	Fixed &operator=(const Fixed &other);
-	//	destructor
-	~Fixed();
-	int getRawBits(void) const;
-	void setRawBits(int const raw);
-
-private:
-	int _fixed_point;
-	static const int _fbits = 8;
-};
-
-#endif
+	std::cout << "inside bsp " << a.getX() << std::endl;
+	std::cout << "inside bsp " << a.getY() << std::endl;
+	return (true);
+}

@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:17:07 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/10 18:57:43 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/10 18:56:39 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,29 @@
 class Fixed
 {
 public:
-	//	default constructor
 	Fixed(void);
 	Fixed(const int value);
 	Fixed(const float value);
-	//	copy constructor
 	Fixed(const Fixed &other);
-	//	copy assignment operator
 	Fixed &operator=(const Fixed &other);
-	//	destructor
+	Fixed operator+(const Fixed &other) const;
+	Fixed operator-(const Fixed &other) const;
+	Fixed operator*(const Fixed &other) const;
+	Fixed operator/(const Fixed &other) const;
+	Fixed &operator++();
+	Fixed operator++(int);
+	Fixed &operator--();
+	Fixed operator--(int);
+	bool operator==(const Fixed &other) const;
+	bool operator!=(const Fixed &other) const;
+	bool operator<(const Fixed &other) const;
+	bool operator<=(const Fixed &other) const;
+	bool operator>(const Fixed &other) const;
+	bool operator>=(const Fixed &other) const;
+	static Fixed max(Fixed &a, Fixed &b);
+	static Fixed max(const Fixed &a, const Fixed &b);
+	static Fixed min(Fixed &a, Fixed &b);
+	static Fixed min(const Fixed &a, const Fixed &b);
 	~Fixed();
 	int getRawBits(void) const;
 	void setRawBits(int const raw);

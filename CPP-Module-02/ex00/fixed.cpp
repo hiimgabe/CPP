@@ -6,12 +6,11 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:25:59 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/06 11:24:35 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/10 18:58:12 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fixed.hpp"
-#include <iostream>
 
 //	default constructor
 Fixed::Fixed() : _fixed_point(0)

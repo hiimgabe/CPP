@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:17:07 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/10 11:29:23 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/10 18:57:21 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define FIXED_H
 
 #include <ostream>
+#include <iostream>
+#include <cmath>
 
 class Fixed
 {

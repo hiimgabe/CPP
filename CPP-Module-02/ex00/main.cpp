@@ -1,4 +1,3 @@
-#include <iostream>
 #include "fixed.hpp"
 
 int main( void ) {
