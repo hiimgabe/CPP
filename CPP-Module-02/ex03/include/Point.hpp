@@ -6,14 +6,14 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:48:06 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/10 20:35:55 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/12 00:23:17 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef POINT_H
 #define POINT_H
 
-#include "fixed.hpp"
+#include "Fixed.hpp"
 
 class Point
 {
@@ -31,7 +31,7 @@ class Point
 };
 
 
-bool bsp(Point const a, Point const b, Point const c, Point const point);
-float dot_product(Point const a, Point const b);
+bool bsp(Point const a, Point const b, Point const c, Point const p);
+
 
 #endif

@@ -2,13 +2,11 @@
 
 int main(void) 
 {
-	Point a(Fixed(4), Fixed(2));
-	Point b(Fixed(4), Fixed(2));
-	Point c(Fixed(4), Fixed(2));
-	Point p(Fixed(4), Fixed(2));
+	Point a(Fixed(0), Fixed(0));
+	Point b(Fixed(5), Fixed(0));
+	Point c(Fixed(0), Fixed(5));
+	Point p(Fixed(2), Fixed(0));
 
-	std::cout << a.getX() << std::endl;
-	std::cout << a.getY() << std::endl;
-	std::cout << bsp(a, b, c, p) << std::endl;
+	std::cout << std::boolalpha <<  bsp(a, b, c, p) << std::endl;
 	return (0);
 }

@@ -6,17 +6,17 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:56:03 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/10 20:36:00 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/11 23:52:44 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Point.hpp"
 
-Point::Point() : _x(0), _y(0) {}
+Point::Point(void) : _x(0), _y(0) {}
 
 Point::Point(const Fixed &x, const Fixed &y) : _x(x), _y(y) {}
 
-Point::Point(const Point &other) {}
+Point::Point(const Point &other) { *this = other; }
 
 Point& Point::operator=(const Point &other)
 {
