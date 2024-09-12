@@ -28,10 +28,10 @@ ${NAME}: ${OBJ}
 
 clean:
 	@rm -rf ${OBJ_DIR}
-	@echo "${RED}cleaning objects${END}"
+	@echo "${RED}cleaning bin${END}"
 
 fclean: clean
-	@rm ${NAME}
+	@rm -rf ${NAME}
 	@echo "${RED}${NAME} deleted${END}"
 
 re: fclean all

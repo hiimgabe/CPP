@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:48:06 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/12 00:23:17 by gabe             ###   ########.fr       */
+/*   Updated: 2024/09/12 15:28:05 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ class Point
 
 
 bool bsp(Point const a, Point const b, Point const c, Point const p);
-
+Fixed triangleArea(Point const a, Point const b, Point const c);
 
 #endif

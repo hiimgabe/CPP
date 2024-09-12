@@ -31,7 +31,7 @@ clean:
 	@echo "${RED}cleaning objects${END}"
 
 fclean: clean
-	@rm ${NAME}
+	@rm -rf ${NAME}
 	@echo "${RED}${NAME} deleted${END}"
 
 re: fclean all
