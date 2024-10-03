@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 12:52:50 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/23 13:33:58 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/03 15:06:56 by gamoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class HumanA
 		void attack(void);
 	private:
 		std::string _name;
-		Weapon& _weapon;
+		Weapon& 	_weapon;
 };
 
 #endif
