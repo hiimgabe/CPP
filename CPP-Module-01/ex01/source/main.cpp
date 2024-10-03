@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:39:01 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/23 13:35:09 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/03 14:54:38 by gamoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	main(int argc, char **argv)
 	size = std::atoi(argv[1]);
 	Zombie*	horde = zombieHorde(size ,argv[2]);
 	while (++i < size)
+	{
+		std::cout << i + 1 << " ";
 		horde[i].announce();
+		std::cout << std::endl;
+	}
 	std::cout << std::endl;
 	delete[] horde;
 	return (0);
