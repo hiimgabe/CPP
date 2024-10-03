@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:39:01 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/23 13:35:36 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/03 14:44:54 by gamoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	int			i;
 	std::string	zombie[10];
 
-	if (argc != 3)
+	if (argc != 4)
 		return (std::cout << "Usage: " << argv[0] << " <zombie[1].name> <zombie[2].name>" << std::endl, 1);
 	i = 1;
 	while(1)
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	Zombie z2 = Zombie(zombie[2]);
 	z2.announce();
 	std::cout << "Zombie allocated on STACK.\n" << std::endl;
+	randomChump(zombie[3]);
 	delete z1;
 	return (0);
 }
