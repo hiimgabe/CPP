@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:46:10 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/23 11:54:54 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/03 14:58:25 by gamoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	main(void)
 	std::string&	stringREF = str;
 	
 	std::cout << "Addresses: " << std::endl;
-	std::cout << &str << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << "\n" << std::endl;
+	std::cout << "str		: " << &str << std::endl;
+	std::cout << "stringPTR	: " << stringPTR << std::endl;
+	std::cout << "stringREF	: " << &stringREF << "\n" << std::endl;
 
 	std::cout << "Values: " << std::endl;
-	std::cout << str << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << stringREF << "\n" << std::endl;
+	std::cout << "str		: " << str << std::endl;
+	std::cout << "stringPTR	: " << stringPTR << std::endl;
+	std::cout << "stringREF	: " << stringREF << "\n" << std::endl;
 	return (EXIT_SUCCESS);
 }
