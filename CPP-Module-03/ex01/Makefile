@@ -16,7 +16,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@echo "[$(GREEN)compiling$(RESET)]: $<"
 
 all: $(NAME)
-	@echo "$(GREEN)$(NAME) executable created$(RESET)"
+	@echo "$(GREEN)$(NAME) compiled$(RESET)"
 
 $(OBJ_DIR):
 	@mkdir bin/
@@ -26,11 +26,11 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(YELLOW)Removing $(NAME) objects files$(RESET)"
+	@echo "$(YELLOW)Deleting object files$(RESET)"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$(RED)removing $(NAME) executable$(RESET)"
+	@echo "$(RED)Deleting $(NAME)$(RESET)"
 
 re: fclean all
 
