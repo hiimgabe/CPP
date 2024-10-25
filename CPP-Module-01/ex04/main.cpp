@@ -6,14 +6,14 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:25:35 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/23 18:44:30 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/25 12:48:07 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-void	sandr(std::string filename, std::string original, std::string search, std::string replace)
+void	sandr(std::string filename, std::string& original, std::string& search, std::string& replace)
 {
 	int			i = 0;
 	int			search_length = search.length();
@@ -21,14 +21,9 @@ void	sandr(std::string filename, std::string original, std::string search, std::
 	std::ofstream	sandr_file;
 	std::string		replace_name = filename + ".replace";
 	
+
 	if (search.empty())
-	{
-		sandr_file.open(replace_name.c_str());
-		if (sandr_file.fail())
-			throw std::runtime_error("Failed to create the outfile.");
-		sandr_file << original;
-		sandr_file.close();
-	}
+		res = original;
 	else
 	{
 		while (i < original.length())
@@ -44,12 +39,12 @@ void	sandr(std::string filename, std::string original, std::string search, std::
 				i++;
 			}
 		}
-		sandr_file.open(replace_name.c_str());
-		if (sandr_file.fail())
-			throw std::runtime_error("Failed to create the outfile.");
-		sandr_file << res;
-		sandr_file.close();
 	}
+	sandr_file.open(replace_name.c_str());
+	if (sandr_file.fail())
+		throw std::runtime_error("Failed to create the outfile.");
+	sandr_file << res;
+	sandr_file.close();
 }
 
 std::string	read_content(std::string str)
@@ -58,8 +53,8 @@ std::string	read_content(std::string str)
 	std::string		buffer;
 	std::string		content;
 
-	file.open(str);
-	if (file.fail())
+	file.open(str.c_str());
+	if (file.fail()) 
 		throw std::runtime_error("Couldn't open the file.");
 	while (std::getline(file, buffer))
 		content.append(buffer + '\n');

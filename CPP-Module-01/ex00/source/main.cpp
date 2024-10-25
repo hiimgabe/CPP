@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:39:01 by gabe              #+#    #+#             */
-/*   Updated: 2024/10/03 14:44:54 by gamoreir         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:06:16 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	std::string	zombie[10];
 
 	if (argc != 4)
-		return (std::cout << "Usage: " << argv[0] << " <zombie[1].name> <zombie[2].name>" << std::endl, 1);
+		return (std::cout << "Usage: " << argv[0] << " <zombie1> <zombie2> <zombie3>" << std::endl, 1);
 	i = 1;
 	while(1)
 	{
