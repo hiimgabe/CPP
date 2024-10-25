@@ -13,7 +13,7 @@ RED		= \033[38;5;196m
 END 	= \033[0m
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp | ${OBJ_DIR}
-	@c++ ${FLAGS} -g -c $< -o $@
+	@c++ ${CFLAGS} -g -c $< -o $@
 	@echo "[${GREEN}compiling${END}]: $<"
 
 all: ${NAME}

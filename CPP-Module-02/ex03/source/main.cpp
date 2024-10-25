@@ -72,6 +72,7 @@ static bool intTest(int argc)
 
 int main(int argc, char **argv) 
 {
+	(void)argv;
 	bool iT = intTest(argc);
 	bool fT = floatTest(argc);
 	bool eT = edgeTest(argc);

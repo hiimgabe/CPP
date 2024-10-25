@@ -5,7 +5,7 @@ INC		= include
 SRC 	= ${wildcard ${SRC_DIR}/*.cpp}
 OBJ 	= ${patsubst ${SRC_DIR}/%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 GREEN	= \033[38;5;47m
 YELLOW	= \033[38;5;226m

@@ -10,12 +10,12 @@ RED		= \033[38;5;196m
 END 	= \033[0m
 
 %.o:%.cpp
-	@c++ ${FLAGS} -g -c $< -o $@
+	@c++ ${CFLAGS} -g -c $< -o $@
 
 all: ${NAME}
 
 ${NAME}: ${OBJ}
-	@c++ ${FLAGS} ${OBJ} -o ${NAME}
+	@c++ ${CFLAGS} ${OBJ} -o ${NAME}
 	@echo "${GREEN}${NAME} executable created${END}"
 
 clean:

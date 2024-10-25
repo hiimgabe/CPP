@@ -6,16 +6,17 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 15:25:35 by gabe              #+#    #+#             */
-/*   Updated: 2024/10/25 12:48:07 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/25 21:38:27 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include <fstream>
 
 void	sandr(std::string filename, std::string& original, std::string& search, std::string& replace)
 {
-	int			i = 0;
+	size_t		i = 0;
 	int			search_length = search.length();
 	std::string	res = "";
 	std::ofstream	sandr_file;

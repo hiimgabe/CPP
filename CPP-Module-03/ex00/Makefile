@@ -1,4 +1,4 @@
-NAME 	= brain
+NAME 	= ClapTrap
 SRC 	= ${wildcard *.cpp}
 OBJ 	= ${SRC:.cpp=.o}
 
@@ -10,7 +10,7 @@ RED		= \033[38;5;196m
 END 	= \033[0m
 
 %.o:%.cpp
-	@c++ ${FLAGS} -g -c $< -o $@
+	c++ ${FLAGS} -g -c $< -o $@
 
 all: ${NAME}
 
