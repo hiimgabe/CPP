@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:46:10 by gabe              #+#    #+#             */
-/*   Updated: 2024/10/03 14:58:25 by gamoreir         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:53:39 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 
 	std::cout << "Values: " << std::endl;
 	std::cout << "str		: " << str << std::endl;
-	std::cout << "stringPTR	: " << stringPTR << std::endl;
+	std::cout << "stringPTR	: " << *stringPTR << std::endl;
 	std::cout << "stringREF	: " << stringREF << "\n" << std::endl;
 	return (EXIT_SUCCESS);
 }
