@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:17:24 by gabe              #+#    #+#             */
-/*   Updated: 2024/07/24 15:19:12 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/25 13:01:24 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	main(void)
 	harl.complain("INFO");
 	harl.complain("WARNING");
 	harl.complain("ERROR");
-	harl.complain("TEST");
+	harl.complain("!EXIST");
 	return (EXIT_SUCCESS);
 }
