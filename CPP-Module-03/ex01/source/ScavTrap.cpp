@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/26 11:48:33 by gabe              #+#    #+#             */
+/*   Updated: 2024/10/26 11:49:31 by gabe             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : _name("Default"), _hitPoints(100), _energyPoints(50), _attackDamage(20)
+ScavTrap::ScavTrap(void)
 {
 	std::cout << "ScavTrap Default Constructor" << std::endl;
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
@@ -11,7 +25,7 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 	std::cout << "ScavTrap Copy Constructor" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap &other) 
+ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
 	std::cout << "ScavTrap Assign Operator" << std::endl;
 	if (this != &other)
@@ -24,14 +38,14 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 	return (*this);
 }
 
-ScavTrap::~ScavTrap()
+ScavTrap::~ScavTrap(void)
 {
 	std::cout << "ScavTrap Destructor" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap " << _name << " Constructor" << std::endl;
+	std::cout << "ScavTrap name Constructor" << std::endl;
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
@@ -39,15 +53,15 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (_energyPoints > 0)
+	if (_energyPoints > 0 && _hitPoints > 0)
 	{
 		_energyPoints--;
-		std::cout << "ScavTrap " << _name << " attacked "
-		<< target << " and has now " << _energyPoints << std::endl;
+		std::cout << "ScavTrap " << this->getName() << " attacked "
+		<< target << " and has now " << this->getEnergyPoints() << " energy points" << std::endl;
 	}
 }
 
-void	ScavTrap::guardGate()
+void	ScavTrap::guardGate(void)
 {
 	std::cout << "ScavTrap is in Gate Keeper mode" << std::endl;
 }

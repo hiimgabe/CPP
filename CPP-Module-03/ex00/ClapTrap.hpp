@@ -28,4 +28,6 @@ class ClapTrap
 		int	getAttackDamage(void) const;
 };
 
+std::ostream &operator<<(std::ostream &ofs, const ClapTrap &trap);
+
 #endif

@@ -31,7 +31,7 @@ ClapTrap::~ClapTrap()
 	std::cout << this->_name << " Destructed" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap " << this->_name << " constructed" << std::endl;
 }
@@ -82,3 +82,12 @@ int	ClapTrap::getHitPoints(void) const { return _hitPoints; }
 int	ClapTrap::getEnergyPoints(void) const { return _energyPoints; }
 
 int	ClapTrap::getAttackDamage(void) const { return _attackDamage; }
+
+std::ostream &operator<<(std::ostream &ofs, const ClapTrap &trap)
+{
+	std::cout << "Name		: " << trap.getName() << std::endl;
+	std::cout << "Hit Points	: " << trap.getHitPoints() << std::endl;
+	std::cout << "Energy Points	: " << trap.getEnergyPoints() << std::endl;
+	std::cout << "Attack Damage	: " << trap.getAttackDamage() << std::endl;
+	return (ofs);
+}

@@ -4,18 +4,20 @@
 
 int	main()
 {
-	ClapTrap a;
-	//ClapTrap b(ClapTrap("Pain"));
-	//ClapTrap c = b;
-	//ClapTrap d("Itachi");
+	ClapTrap	a;
+	ClapTrap	b("b");
 
-	//a.attack("Itachi");
-	//b.takeDamage(10);
-	//b.beRepaired(1);
-	//c.beRepaired(5);
-	//d.takeDamage(5);
-	//d.beRepaired(5);
-	a.takeDamage(3);
-	ClapTrap b = a;
-	return 0;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+
+	a.attack("Default");
+	b.takeDamage(a.getAttackDamage());
+	b.attack("a");
+	a.takeDamage(b.getAttackDamage());
+	a.beRepaired(100);
+
+
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	return (0);
 }
