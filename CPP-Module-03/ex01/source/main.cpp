@@ -20,6 +20,7 @@ int	main()
 	ScavTrap	defaultTrap;
 	ScavTrap	itachi("Itachi");
 
+	std::cout << std::endl << "===== BEGGINING STATS =====" << std::endl;
 	std::cout << defaultTrap << std::endl;
 	std::cout << itachi << std::endl;
 
@@ -32,6 +33,7 @@ int	main()
 
 	ScavTrap	clone = itachi;
 
+	std::cout << std::endl << "===== ENDING STATS =====" << std::endl;
 	std::cout << defaultTrap << std::endl;
 	std::cout << itachi << std::endl;
 	std::cout << clone << std::endl;
