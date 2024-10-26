@@ -11,8 +11,8 @@ FragTrap::FragTrap(void)
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
-	std::cout << "FragTrap Copy Constructor" << std::endl;
 	*this = other;
+	std::cout << "FragTrap Copy Constructor" << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap &other)

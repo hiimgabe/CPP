@@ -75,13 +75,13 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << " lacks energy/hitpoints to be repaired." << std::endl;
 }
 
-std::string	ClapTrap::getName(void) const { return _name; }
+std::string	ClapTrap::getName(void) const { return (_name); }
 
-int	ClapTrap::getHitPoints(void) const { return _hitPoints; }
+int	ClapTrap::getHitPoints(void) const { return (_hitPoints); }
 
-int	ClapTrap::getEnergyPoints(void) const { return _energyPoints; }
+int	ClapTrap::getEnergyPoints(void) const { return (_energyPoints); }
 
-int	ClapTrap::getAttackDamage(void) const { return _attackDamage; }
+int	ClapTrap::getAttackDamage(void) const { return (_attackDamage); }
 
 std::ostream &operator<<(std::ostream &ofs, const ClapTrap &trap)
 {

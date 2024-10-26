@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:48:33 by gabe              #+#    #+#             */
-/*   Updated: 2024/10/26 15:42:51 by gabe             ###   ########.fr       */
+/*   Updated: 2024/10/26 12:50:53 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ ScavTrap::ScavTrap(void)
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	std::cout << "ScavTrap Copy Constructor" << std::endl;
-	*this = other;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
