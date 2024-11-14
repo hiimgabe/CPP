@@ -1,5 +1,5 @@
 
-#include "../include/Animal.hpp"
+#include "../include/AAnimal.hpp"
 #include "../include/Cat.hpp"
 #include "../include/Dog.hpp"
 #include "../include/Brain.hpp"
@@ -22,34 +22,31 @@ void	correctBrainOperations(void)
 	std::cout << std::endl;
 	std::cout << "Printing cat ideas" << std::endl << std::endl;
 	cat1->getBrain()->printIdeas();
-	std::cout << std::endl;
 
 	delete dog1;
 	delete cat1;
 }
 
-void	wrongBrainOpreations()
+void	normalAnimal()
 {
-	Cat*	cat1 = new Cat();
+	std::cout << "Creating Animal, Cat and Dog" << std::endl << std::endl;
+	AAnimal	*zoo[2] = {new Cat(), new Dog()};
 
 	std::cout << std::endl;
-	std::cout << "Setting dog and cat ideas wrongly" << std::endl << std::endl;
-	try
-	{
-		cat1->getBrain()->setIdea("Wrong idea index", -2);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << "Exception caught : " << e.what() << std::endl << std::endl;
-	}
+	std::cout << "Animal go:" << std::endl;
+	for (int i = 0; i < 2; i++)
+		zoo[i]->makeSound();
 	
-	delete cat1;
+	std::cout << std::endl;
+	std::cout << "Animals gone" << std::endl << std::endl;
+	for (int i = 0; i < 2; i++)
+		delete zoo[i];
 }
 
 int main()
 {
 	std::cout << "Starting brain operations" << std::endl << std::endl;
+	normalAnimal();
 	correctBrainOperations();
-	wrongBrainOpreations();
 	return (0);
 }
