@@ -8,7 +8,7 @@
 void	wrongAnimal()
 {
 	std::cout << "Creating WrongAnimal" << std::endl << std::endl;
-	WrongAnimal	*wrong[2] = {new WrongAnimal, new WrongCat()};
+	WrongAnimal	*wrong[2] = {new WrongAnimal(), new WrongCat()};
 
 	std::cout << std::endl;
 	std::cout << "Animal go:" << std::endl;
