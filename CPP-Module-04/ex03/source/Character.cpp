@@ -1,28 +1,34 @@
 
 #include "../include/Character.hpp"
 
-Character::Character(void)
+Character::Character(void) : _inventory(), _name("default")
 {
-	for (int i = 0; i < 4; i++)
-		_inventory[i] = 0;
 	std::cout << "Character default constructor called." << std::endl;
 }
 
 Character::Character(const Character &other) : ICharacter(other)
 {
-	*this = other;
 	std::cout << "Character copy constructor called." << std::endl;
+	*this = other;
 }
 
 Character	&Character::operator=(const Character &other)
 {
+	std::cout << "Character copy assignment operator called." << std::endl;
 	if (this != &other)
 		*this = other;
-	std::cout << "Character copy assignment operator called." << std::endl;
 	return (*this);
 }
 
-Character::~Character(void) { std::cout << "Character destructor called." << std::endl; }
+Character::~Character(void)
+{
+	std::cout << "Character destructor called." << std::endl;
+	for (int i = 0; i < INV_SPACE; i++)
+	{
+		if (_inventory[i])
+			delete _inventory[i];
+	}
+}
 
 
 
@@ -30,15 +36,22 @@ std::string const & Character::getName() const { return (_name); }
 
 void	Character::equip(AMateria* m)
 {
+	if (!m || m->getInUse())
+	{
+		std::cout << "Materia is already taken" << std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i] == 0)
 		{
 			_inventory[i] = m;
+			m->setInUse(true);
 			std::cout << "Equiped materia " << m->getType() << " at index: " << i << std::endl;
-			break ;
+			return ;
 		}
 	}
+	MateriaCleaner::gatherMateria(m);
 }
 
 void	Character::unequip(int idx)
