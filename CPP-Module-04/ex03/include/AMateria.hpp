@@ -3,6 +3,7 @@
 #define	AMATERIA_H
 
 #include <iostream>
+#include "ICharacter.hpp"
 
 class ICharacter;
 
@@ -18,8 +19,11 @@ class AMateria
 		virtual	AMateria* clone(void) const = 0;
 		virtual	void use(ICharacter& target);
 	
+		bool getInUse(void);
+		void setInUse(bool value);
 	protected:
 		std::string	_type;
+		bool		_inUse;
 };
 
 #endif

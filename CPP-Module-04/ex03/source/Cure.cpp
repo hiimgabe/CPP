@@ -3,21 +3,22 @@
 
 Cure::Cure(void)
 {
-	_type = "cure";
 	std::cout << "Cure default constructor called" << std::endl;
+	_type = "cure";
+	_inUse = false;
 }
 
 Cure::Cure(const Cure &other) : AMateria(other)
 {
-	*this = other;
 	std::cout << "Cure copy constructor called." << std::endl;
+	*this = other;
 }
 
 Cure &Cure::operator=(const Cure &other)
 {
+	std::cout << "Cure assign operator called." << std::endl;
 	if (this != &other)
 		AMateria::operator=(other);
-	std::cout << "Cure assign operator called." << std::endl;
 	return (*this);
 }
 

@@ -2,6 +2,7 @@
 #ifndef CHARACTER_H
 #define	CHARACTER_H
 
+#include "MateriaCleaner.hpp"
 #include "ICharacter.hpp"
 
 #define INV_SPACE 4

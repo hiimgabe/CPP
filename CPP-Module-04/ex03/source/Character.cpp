@@ -43,6 +43,26 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
-	// Solve later, can't delete _inventory[idx], find a solution
-	// Like storing somewhere else
+	if (idx >= INV_SPACE || idx < 0)
+	{
+		std::cout << "Out of index range" << std::endl;
+		return ;
+	}
+	else if (_inventory[idx] == NULL)
+	{
+		std::cout << "Inventory space is already empty" << std::endl;
+	}
+	MateriaCleaner::gatherMateria(_inventory[idx]);
+	_inventory[idx] = NULL;
+}
+
+void	Character::use(int idx, ICharacter& target)
+{
+	if (idx >= INV_SPACE || idx < 0)
+	{
+		std::cout << "Index out of range" << std::endl;
+		return ;
+	}
+	if (_inventory[idx])
+		_inventory[idx]->use(target);
 }

@@ -3,21 +3,22 @@
 
 Ice::Ice(void)
 {
-	_type = "ice";
 	std::cout << "Ice default constructor called." << std::endl;
+	_type = "ice";
+	_inUse = false;
 }
 
 Ice::Ice(const Ice &other) : AMateria(other)
 {
-	*this = other;
 	std::cout << "Ice copy constructor called." << std::endl;
+	*this = other;
 }
 
 Ice &Ice::operator=(const Ice &other)
 {
+	std::cout << "Ice assign operator called." << std::endl;
 	if (this != &other)
 		AMateria::operator=(other);
-	std::cout << "Ice assign operator called." << std::endl;
 	return (*this);
 }
 
