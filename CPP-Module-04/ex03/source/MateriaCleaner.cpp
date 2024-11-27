@@ -41,7 +41,7 @@ void MateriaCleaner::pushMateria(AMateria* materia)
 {
 	if (materia->getInUse())
 	{
-		std::cout << "Can't cleanup a materia that is being used" << std::endl;
+		std::cout << "Can't cleanup a materia that is being used : " << materia->getType() << std::endl;
 	}
 	std::cout << "Cleaning up " << materia->getType() << std::endl;
 	MateriaList* new_node = new MateriaList;

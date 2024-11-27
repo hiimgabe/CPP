@@ -21,6 +21,7 @@ class Character : public ICharacter
 		void	unequip(int idx);
 		void	use(int idx, ICharacter& target);
 
+		AMateria*	getInvItem(int idx);
 		void	getInv(void);
 	private:
 		AMateria*	_inventory[INV_SPACE];

@@ -5,7 +5,64 @@
 #include "../include/Ice.hpp"
 #include "../include/Cure.hpp"
 
-void	outOfBoundsMateriaSource()
+
+/*
+	"É p'ra amanhã
+	Bem podias fazer hoje" - not today tho, finishing tests tomorrow
+*/
+//void	deepCopySource(void)
+//{
+//	MateriaSource*	original = new MateriaSource();
+//	MateriaSource*	copy = new MateriaSource();
+//
+//	for (int i = 0; i < INV_SPACE; i++)
+//		original->learnMateria(new Ice());
+//	
+//}
+
+void	deepCopyCharacter(void)
+{
+	Character*	michael = new Character("Michael");
+	Character*	toby = new Character("Toby");
+	MateriaSource*	source = new MateriaSource();
+
+	source->learnMateria(new Ice());
+	for (int i = 0; i < INV_SPACE; i++)
+		michael->equip(source->createMateria("ice"));
+	std::cout << "Michael:" << std::endl;
+	michael->getInv();
+	std::cout << "Toby before:" << std::endl;
+	toby->getInv();
+	std::cout << "Tody after:" << std::endl;
+	*toby = *michael;
+	toby->getInv();
+	delete michael;
+	delete toby;
+	delete source;
+}
+
+void	outOfBoundsCharacter(void)
+{
+	Character*	michael = new Character("Michael");
+	Character*	toby = new Character("Toby");
+	MateriaSource*	source = new MateriaSource();
+
+	source->learnMateria(new Ice());
+	source->learnMateria(new Cure());
+
+	for (int i = 0; i < 8; i++)
+	{
+		michael->equip(source->createMateria("ice"));
+		michael->use(i, *toby);
+	}
+	for (int i = 0; i < INV_SPACE; i++)
+		michael->unequip(i);
+	delete michael;
+	delete toby;
+	delete source;
+}
+
+void	outOfBoundsMateriaSource(void)
 {
 	MateriaSource* source = new MateriaSource();
 	source->learnMateria(new Ice());
@@ -23,7 +80,7 @@ void	outOfBoundsMateriaSource()
 	delete source;
 }
 
-void	subjectTest()
+void	subjectTest(void)
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -50,4 +107,6 @@ int	main(void)
 {
 	//subjectTest();
 	//outOfBoundsMateriaSource();
+	//outOfBoundsCharacter();
+	//deepCopyCharacter();
 }

@@ -16,7 +16,18 @@ Character	&Character::operator=(const Character &other)
 {
 	std::cout << "Character copy assignment operator called." << std::endl;
 	if (this != &other)
-		*this = other;
+	{
+		for (int i = 0; i < INV_SPACE; i++)
+		{
+			if (_inventory[i])
+			{
+				delete _inventory[i];
+				_inventory[i] = NULL;
+			}
+			if (other._inventory[i])
+				_inventory[i] = other._inventory[i]->clone();
+		}
+	}
 	return (*this);
 }
 
@@ -82,10 +93,19 @@ void	Character::use(int idx, ICharacter& target)
 
 void	Character::getInv(void)
 {
-	std::cout << "Character inventory: " << std::endl;
+	std::cout << getName() << " inventory: " << std::endl;
 	for (int i = 0; i < INV_SPACE; i++)
 	{
-		if (_inventory[i])
+		if (getInvItem(i))
 			std::cout << "At index : " << i << " " << _inventory[i]->getType() << std::endl;
+		else
+			std::cout << "At index : " << i << " empty" << std::endl;
 	}
+}
+
+AMateria*	Character::getInvItem(int idx)
+{
+	if (idx < 0 || idx >= INV_SPACE)
+		return (NULL);
+	return (_inventory[idx]);
 }
