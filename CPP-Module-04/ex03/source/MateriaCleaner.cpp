@@ -1,7 +1,7 @@
 
 #include "../include/MateriaCleaner.hpp"
 
-MateriaCleaner::MateriaCleaner(void) : _materiaList(nullptr)
+MateriaCleaner::MateriaCleaner(void) : _materiaList()
 {
 	std::cout << "MateriaCleaner default constructor called." << std::endl;
 }
@@ -9,6 +9,7 @@ MateriaCleaner::MateriaCleaner(void) : _materiaList(nullptr)
 MateriaCleaner::~MateriaCleaner(void)
 {
 	std::cout << "MateriaCleaner destructor called" << std::endl;
+	cleanMaterias();
 }
 
 /**
@@ -68,5 +69,19 @@ void MateriaCleaner::gatherMateria(AMateria* materia)
 	getInstance().pushMateria(materia);
 }
 
+void MateriaCleaner::showListI(void)
+{
+	MateriaList*	current = _materiaList;
+
+	while (current)
+	{
+		std::cout << _materiaList->materia->getType() << std::endl;
+		current = current->next;
+	}
+}
+
 void MateriaCleaner::showList(void)
-{}
+{
+	std::cout << "MateriaCleaner list of cleaned materias: " << std::endl;
+	getInstance().showListI();
+}

@@ -1,11 +1,29 @@
 
 #include "../include/AMateria.hpp"
 #include "../include/MateriaSource.hpp"
-#include "../include/ICharacter.hpp"
+#include "../include/Character.hpp"
 #include "../include/Ice.hpp"
 #include "../include/Cure.hpp"
 
-int	main(void)
+void	outOfBoundsMateriaSource()
+{
+	MateriaSource* source = new MateriaSource();
+	source->learnMateria(new Ice());
+	source->learnMateria(new Cure());
+
+	AMateria* materia;
+	for (int i = 0; i < 6; i++)
+	{
+		materia = source->createMateria("ice");
+		source->learnMateria(materia);
+	}
+	source->displaySource();
+	MateriaCleaner::showList();
+
+	delete source;
+}
+
+void	subjectTest()
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -15,7 +33,7 @@ int	main(void)
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("Cure");
+	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
 	ICharacter* bob = new Character("bob");
@@ -26,4 +44,10 @@ int	main(void)
 	delete bob;
 	delete me;
 	delete src;
+}
+
+int	main(void)
+{
+	//subjectTest();
+	//outOfBoundsMateriaSource();
 }

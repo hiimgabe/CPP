@@ -30,7 +30,7 @@ Character::~Character(void)
 	}
 }
 
-
+Character::Character(std::string name) : _inventory(), _name(name) { std::cout << "Character string constructor called." << std::endl; }
 
 std::string const & Character::getName() const { return (_name); }
 
@@ -78,4 +78,14 @@ void	Character::use(int idx, ICharacter& target)
 	}
 	if (_inventory[idx])
 		_inventory[idx]->use(target);
+}
+
+void	Character::getInv(void)
+{
+	std::cout << "Character inventory: " << std::endl;
+	for (int i = 0; i < INV_SPACE; i++)
+	{
+		if (_inventory[i])
+			std::cout << "At index : " << i << " " << _inventory[i]->getType() << std::endl;
+	}
 }

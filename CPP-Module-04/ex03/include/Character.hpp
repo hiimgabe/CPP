@@ -11,6 +11,7 @@ class Character : public ICharacter
 {
 	public:
 		Character(void);
+		Character(std::string name);
 		Character(const Character &other);
 		Character &operator=(const Character &other);
 		~Character(void);
@@ -20,10 +21,10 @@ class Character : public ICharacter
 		void	unequip(int idx);
 		void	use(int idx, ICharacter& target);
 
-		AMateria*	getInv(void) const;
+		void	getInv(void);
 	private:
-		std::string	_name;
 		AMateria*	_inventory[INV_SPACE];
+		std::string	_name;
 };
 
 #endif

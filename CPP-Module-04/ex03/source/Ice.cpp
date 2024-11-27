@@ -24,8 +24,6 @@ Ice &Ice::operator=(const Ice &other)
 
 Ice::~Ice(void) { std::cout << "Ice destructor called." << std::endl; }
 
-
-
 AMateria* Ice::clone(void) const { return (new Ice(*this)); }
 
 void	Ice::use(ICharacter& target)

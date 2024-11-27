@@ -24,6 +24,7 @@ class MateriaCleaner
 
 		void pushMateria(AMateria* materia);
 		void cleanMaterias(void);
+		void showListI(void);
 
 		static MateriaCleaner& getInstance(void);
 
