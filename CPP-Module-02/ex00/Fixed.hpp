@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gamoreir <gamoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:17:07 by gabe              #+#    #+#             */
-/*   Updated: 2024/10/25 21:47:54 by gabe             ###   ########.fr       */
+/*   Updated: 2024/11/28 10:57:39 by gamoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ public:
 	Fixed &operator=(const Fixed &other);
 	//	destructor
 	~Fixed();
+	
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 
 private:
-	int _fixed_point;
-	static const int _fbits = 8;
+	int 				_fixed_point;
+	static const int	_fbits = 8;
 };
 
 #endif
