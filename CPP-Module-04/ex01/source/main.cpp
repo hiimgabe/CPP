@@ -24,6 +24,9 @@ void	correctBrainOperations(void)
 	cat1->getBrain()->printIdeas();
 	std::cout << std::endl;
 
+	Cat	dog2 = *cat1;
+	dog2.getBrain()->printIdeas();
+
 	delete dog1;
 	delete cat1;
 }
@@ -49,7 +52,20 @@ void	wrongBrainOpreations()
 int main()
 {
 	std::cout << "Starting brain operations" << std::endl << std::endl;
+	
+	//Dog basic;
+	//Dog test(basic);
+
+	//Cat basic;
+	//{
+	//	Cat tmp = basic;
+	//}
+	//Dog basic2;
+	//{
+	//	Dog tmp = basic2;
+	//}
+
 	correctBrainOperations();
-	wrongBrainOpreations();
+	//wrongBrainOpreations();
 	return (0);
 }

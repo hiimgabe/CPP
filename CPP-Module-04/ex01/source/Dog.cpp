@@ -19,9 +19,9 @@ Dog &Dog::operator=(const Dog &other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		if (_brain != NULL)
-			delete _brain;
-		_brain = new Brain(*(other._brain));
+		//if (_brain != NULL)
+		//	delete _brain;
+		_brain = new Brain(*other._brain);
 	}
 	return (*this);
 }

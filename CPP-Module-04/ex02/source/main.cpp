@@ -23,6 +23,9 @@ void	correctBrainOperations(void)
 	std::cout << "Printing cat ideas" << std::endl << std::endl;
 	cat1->getBrain()->printIdeas();
 
+	Cat	dog2 = *cat1;
+	dog2.getBrain()->printIdeas();
+
 	delete dog1;
 	delete cat1;
 }
@@ -46,7 +49,20 @@ void	normalAnimal()
 int main()
 {
 	std::cout << "Starting brain operations" << std::endl << std::endl;
-	normalAnimal();
-	correctBrainOperations();
+	
+	//Dog basic;
+	//Dog test(basic);
+
+	Cat basic;
+	{
+		Cat tmp = basic;
+	}
+	Dog basic2;
+	{
+		Dog tmp = basic2;
+	}
+
+	//normalAnimal();
+	//correctBrainOperations();
 	return (0);
 }

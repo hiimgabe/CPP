@@ -109,4 +109,17 @@ int	main(void)
 	//outOfBoundsMateriaSource();
 	//outOfBoundsCharacter();
 	//deepCopyCharacter();
+
+	AMateria* mat;
+	Character* bob = new Character("bob");
+	MateriaSource* source = new MateriaSource();
+
+	source->learnMateria(new Ice());
+	mat = source->createMateria("ice");
+	bob->equip(mat);
+
+	bob->getInv();
+
+	delete bob;
+	delete source;
 }

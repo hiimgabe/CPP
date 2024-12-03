@@ -22,4 +22,4 @@ std::string WrongAnimal::getType() const { return (_type); }
 
 void	WrongAnimal::setType(std::string type) { _type = type; }
 
-void	WrongAnimal::makeSound() const { std::cout << "Hi!" << std::endl; }
+void	WrongAnimal::makeSound() const { std::cout << getType() << ": Hi!" << std::endl; }

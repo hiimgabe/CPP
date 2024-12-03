@@ -22,4 +22,4 @@ WrongCat &WrongCat::operator=(const WrongCat &other)
 
 WrongCat::~WrongCat(void) { std::cout << "WrongCat Destructor Called" << std::endl; }
 
-void WrongCat::makeSound() const { std::cout << "MooOOoOoOoOOOoOOO" << std::endl; }
+void WrongCat::makeSound() const { std::cout << getType() << ": MooOOoOoOoOOOoOOO" << std::endl; }

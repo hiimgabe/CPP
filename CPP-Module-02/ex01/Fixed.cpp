@@ -6,7 +6,7 @@
 /*   By: gabe <gabe@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:25:59 by gabe              #+#    #+#             */
-/*   Updated: 2024/09/12 15:27:39 by gabe             ###   ########.fr       */
+/*   Updated: 2024/11/28 21:59:31 by gabe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ Fixed::Fixed(const int value)
 	this->_fixed_point = value << Fixed::_fbits;
 }
 
+/*
+	42.42 * (1 << _fbits) = 42.42 * (1 << 8) = 42.42 * 256 = 10859.52
+	roundf(10859,52) = 10860
+	when toFloat() is called:
+	10860 / 256 = 42.421875
+	std::cout will round this number to a default of 6 most significant digits
+	aka 42.4219
+*/
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;

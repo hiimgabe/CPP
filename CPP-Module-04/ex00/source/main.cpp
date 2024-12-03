@@ -11,11 +11,11 @@ void	wrongAnimal()
 	WrongAnimal	*wrong[2] = {new WrongAnimal(), new WrongCat()};
 
 	std::cout << std::endl;
-	std::cout << "Animal go:" << std::endl;
+	std::cout << "Animal sounds:" << std::endl;
 	for (int i = 0; i < 2; i++)
 		wrong[i]->makeSound();
 	std::cout << std::endl;
-	std::cout << "Animals gone" << std::endl << std::endl;
+	std::cout << "Animals deletion" << std::endl << std::endl;
 	for (int i = 0; i < 2; i++)
 		delete wrong[i];
 }
@@ -26,12 +26,12 @@ void	normalAnimal()
 	Animal	*zoo[2] = {new Cat(), new Dog()};
 
 	std::cout << std::endl;
-	std::cout << "Animal go:" << std::endl;
+	std::cout << "Animal sounds:" << std::endl;
 	for (int i = 0; i < 2; i++)
 		zoo[i]->makeSound();
 	
 	std::cout << std::endl;
-	std::cout << "Animals gone" << std::endl << std::endl;
+	std::cout << "Animals deletion" << std::endl << std::endl;
 	for (int i = 0; i < 2; i++)
 		delete zoo[i];
 }

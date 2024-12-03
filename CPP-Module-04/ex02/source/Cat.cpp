@@ -19,8 +19,8 @@ Cat &Cat::operator=(const Cat &other)
 	if (this != &other)
 	{
 		AAnimal::operator=(other);
-		if (_brain != NULL)
-			delete _brain;
+		//if (_brain != NULL)
+		//	delete _brain;
 		_brain = new Brain(*(other._brain));
 	}
 	return (*this);
