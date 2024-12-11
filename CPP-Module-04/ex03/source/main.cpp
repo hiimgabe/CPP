@@ -105,10 +105,10 @@ void	subjectTest(void)
 
 int	main(void)
 {
-	//subjectTest();
-	//outOfBoundsMateriaSource();
-	//outOfBoundsCharacter();
-	//deepCopyCharacter();
+	subjectTest();
+	outOfBoundsMateriaSource();
+	outOfBoundsCharacter();
+	deepCopyCharacter();
 
 	AMateria* mat;
 	Character* bob = new Character("bob");

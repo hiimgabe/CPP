@@ -19,8 +19,6 @@ Cat &Cat::operator=(const Cat &other)
 	if (this != &other)
 	{
 		AAnimal::operator=(other);
-		//if (_brain != NULL)
-		//	delete _brain;
 		_brain = new Brain(*(other._brain));
 	}
 	return (*this);
@@ -28,7 +26,8 @@ Cat &Cat::operator=(const Cat &other)
 
 Cat::~Cat(void)
 {
-	delete _brain;
+	if (_brain != NULL)
+		delete _brain;
 	std::cout << "Cat Default Destructor Called" << std::endl;
 }
 
