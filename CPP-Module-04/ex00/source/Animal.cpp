@@ -28,3 +28,12 @@ void	Animal::setType(const std::string &type) { _type = type; }
 
 
 void Animal::makeSound() const { return ; }
+
+
+std::ostream &operator<<(std::ostream &ofs, const Animal &animal)
+{
+	std::cout << "\n=== Animal overload << operator ===" << std::endl;
+	ofs << "Animal of type: " << animal.getType() << "\n";
+	animal.makeSound();
+	return (ofs);
+}

@@ -20,4 +20,6 @@ class WrongAnimal
 		std::string	_type;
 };
 
+std::ostream &operator<<(std::ostream &ofs, const WrongAnimal &wrongAnimal);
+
 #endif

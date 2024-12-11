@@ -23,3 +23,11 @@ std::string WrongAnimal::getType() const { return (_type); }
 void	WrongAnimal::setType(std::string type) { _type = type; }
 
 void	WrongAnimal::makeSound() const { std::cout << getType() << ": Hi!" << std::endl; }
+
+std::ostream &operator<<(std::ostream &ofs, const WrongAnimal &wrongAnimal)
+{
+	std::cout << "\n=== WrongAnimal overload << operator ===" << std::endl;
+	ofs << "Animal of type: " << wrongAnimal.getType() << "\n";
+	wrongAnimal.makeSound();
+	return (ofs);
+}

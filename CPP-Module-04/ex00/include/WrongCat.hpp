@@ -15,4 +15,6 @@ class WrongCat : public WrongAnimal
 		void makeSound() const;
 };
 
+std::ostream &operator<<(std::ostream &ofs, const WrongCat &wrongAnimal);
+
 #endif

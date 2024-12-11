@@ -15,4 +15,6 @@ class Cat : public Animal
 		void makeSound(void) const;
 };
 
+std::ostream &operator<<(std::ostream &ofs, const Cat &cat);
+
 #endif

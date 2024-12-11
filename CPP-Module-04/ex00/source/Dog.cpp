@@ -25,3 +25,12 @@ Dog &Dog::operator=(const Dog &other)
 Dog::~Dog(void) { std::cout << "Dog Destructor called" << std::endl; }
 
 void Dog::makeSound(void) const { std::cout << getType() << ": WOOF" << std::endl; }
+
+
+std::ostream &operator<<(std::ostream &ofs, const Dog &dog)
+{
+	std::cout << "\n=== Dog overload << operator ===" << std::endl;
+	ofs << "Animal of type: " << dog.getType() << "\n";
+	dog.makeSound();
+	return (ofs);
+}

@@ -20,7 +20,10 @@ Brain &Brain::operator=(const Brain &other)
 	return (*this);
 }
 
-Brain::~Brain(void) { std::cout << "Brain destructor called" << std::endl; }
+Brain::~Brain(void)
+{
+	std::cout << "Brain destructor called" << std::endl;
+}
 
 int	Brain::getNbIdea(void) { return (_nbIdeas); }
 
@@ -33,14 +36,17 @@ std::string	Brain::getIdea(int index) const
 
 void	Brain::setIdea(const std::string &idea, int index)
 {
-	if (index < 0 || index >= 100)
+	if (0 <= index  and index < 100)
+	{
+		_nbIdeas++;
+		_ideas[index] = idea;
+	}
+	else
 		throw std::runtime_error("Index out of range");
-	_ideas[index] = idea;
-	_nbIdeas++;
 }
 
 void	Brain::printIdeas(void)
 {
-	for (int i = 0; i < _nbIdeas; i++)
-		std::cout << _ideas[i] << std::endl;
+	for (int i = 0; i < this->getNbIdea(); i++)
+		std::cout << i << ": " << _ideas[i] << std::endl;
 }

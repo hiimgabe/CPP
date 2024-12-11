@@ -19,16 +19,16 @@ Dog &Dog::operator=(const Dog &other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		//if (_brain != NULL)
-		//	delete _brain;
-		_brain = new Brain(*other._brain);
+		delete _brain;
+		_brain = new Brain(*(other._brain));
 	}
 	return (*this);
 }
 
 Dog::~Dog(void)
 {
-	delete _brain;
+	if (_brain != NULL)
+		delete _brain;
 	std::cout << "Dog Destructor called" << std::endl;
 }
 
