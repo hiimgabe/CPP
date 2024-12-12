@@ -102,10 +102,34 @@ void	deepMateriaCopyTest()
 	pressEnter();
 }
 
+void	cleanupLimitTest(void)
+{
+	IMateriaSource	*src = new MateriaSource();
+	ICharacter		*tommy = new Character();
+
+	std::cout << YELLOW << "\n=== Learning Materias ===\n" << RESET << std::endl;
+	for (int i = 0; i < 10; i++)
+		src->learnMateria(new Ice());
+	AMateria	*mat;
+	std::cout << YELLOW << "\n=== Creating & equiping Materias ===\n" << RESET << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		mat = src->createMateria("ice");
+		tommy->equip(mat);
+	}
+	std::cout << GREEN << "\n=== Cleanup list ===\n" << RESET << std::endl;
+	MateriaCleaner::showList();
+	std::cout << std::endl;
+	delete src;
+	delete tommy;
+	pressEnter();
+}
+
 int	main(void)
 {
 	clearScreen();
 	subjectTest(); // Test OK OK
+	cleanupLimitTest(); // Test OK OK
 	deepCharacterCopyTest(); // Test OK OK
 	deepMateriaCopyTest(); // Test OK OK
 }

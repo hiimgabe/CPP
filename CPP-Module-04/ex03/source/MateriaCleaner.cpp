@@ -72,11 +72,13 @@ void MateriaCleaner::gatherMateria(AMateria* materia)
 void MateriaCleaner::showListI(void)
 {
 	MateriaList*	current = _materiaList;
+	int i = 0;
 
 	while (current)
 	{
-		std::cout << _materiaList->materia->getType() << std::endl;
+		std::cout << i << ": " << _materiaList->materia->getType() << std::endl;
 		current = current->next;
+		i++;
 	}
 }
 
