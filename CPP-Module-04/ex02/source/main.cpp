@@ -1,5 +1,7 @@
 
 #include "../include/AAnimal.hpp"
+#include "../include/WrongAnimal.hpp"
+#include "../include/WrongCat.hpp"
 #include "../include/Cat.hpp"
 #include "../include/Dog.hpp"
 #include "../include/Brain.hpp"
@@ -44,7 +46,7 @@ void	correctBrainOperations(void)
 	pressEnter();
 }
 
-void	normalAnimal()
+void	normalAnimal(void)
 {
 	std::cout << YELLOW << "\n=== Creating Animal, Cat and Dog ===\n" << RESET << std::endl << std::endl;
 	AAnimal	*zoo[2] = {new Cat(), new Dog()};
@@ -59,13 +61,20 @@ void	normalAnimal()
 	pressEnter();
 }
 
-int main()
+void	wrongAnimal(void)
 {
-	clearScreen();
-	std::cout << "Starting brain operations" << std::endl << std::endl;
-	
-	//AAnimal *instantiateTest = new AAnimal();
+	WrongAnimal	*wrong = new WrongAnimal();
+	WrongAnimal	*cat = new WrongCat();
 
+	wrong->makeSound();
+	cat->makeSound();
+
+	delete cat;
+	delete wrong;
+}
+
+void	basicTest(void)
+{
 	std::cout << YELLOW << "\n=== Basic Test ===\n" << RESET << std::endl;
 	Cat basic;
 	{
@@ -75,7 +84,17 @@ int main()
 	{
 		Dog tmp = basic2;
 	}
+}
+
+int main()
+{
+	clearScreen();
+	
+	//AAnimal test; // Subject Test
+
+	basicTest();
 	normalAnimal();
+	wrongAnimal();
 	correctBrainOperations();
 	return (0);
 }
