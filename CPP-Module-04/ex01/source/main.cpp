@@ -36,6 +36,7 @@ void	correctBrainOperations(void)
 		dog1->getBrain()->setIdea("bark",i);
 	std::cout << GREEN << "\n=== Printing Dog ideas ===\n" << RESET << std::endl;
 	dog1->getBrain()->printIdeas();
+	std::cout << std::endl;
 	delete cat1;
 	delete dog1;
 	pressEnter();
@@ -84,6 +85,7 @@ void	wrongBrainOpreations(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 	delete cat1;
 	delete dog1;
 	pressEnter();
@@ -98,8 +100,10 @@ void	deepCopyTest(void)
 	basicCat.getBrain()->printIdeas();
 	std::cout << std::endl;
 	{
-		Cat tmp;
-		tmp = basicCat;
+		Cat tmp = basicCat;
+		std::cout << GREEN << "\n=== Printing tmp ideas after assign ===\n" << RESET << std::endl;
+		tmp.getBrain()->printIdeas();
+		std::cout << std::endl;
 	}
 	std::cout << GREEN << "\n=== Printing BasicCat ideas after tmp being deleted inside scope ===\n" << RESET << std::endl;
 	basicCat.getBrain()->printIdeas();
@@ -111,8 +115,10 @@ void	deepCopyTest(void)
 	basicDog.getBrain()->printIdeas();
 	std::cout << std::endl;
 	{
-		Dog tmp;
-		tmp = basicDog;
+		Dog tmp = basicDog;
+		std::cout << GREEN << "\n=== Printing tmp ideas after assign ===\n" << RESET << std::endl;
+		tmp.getBrain()->printIdeas();
+		std::cout << std::endl;
 	}
 	std::cout << GREEN << "\n=== Printing BasicDog ideas after tmp being deleted inside scope ===\n" << RESET << std::endl;
 	basicDog.getBrain()->printIdeas();
@@ -131,8 +137,7 @@ void	deepCopyTest2(void)
 	cat1.getBrain()->printIdeas();
 	std::cout << std::endl;
 	{
-		Cat tmpCat;
-		tmpCat = cat1;
+		Cat tmpCat = cat1;
 		std::cout << GREEN << "\n=== tmpCat Brain ===\n" << RESET << std::endl;
 		tmpCat.getBrain()->printIdeas();
 		std::cout << std::endl;
@@ -147,8 +152,7 @@ void	deepCopyTest2(void)
 	dog1.getBrain()->printIdeas();
 	std::cout << std::endl;
 	{
-		Dog tmpDog;
-		tmpDog = dog1;
+		Dog tmpDog = dog1;
 		std::cout << GREEN << "\n=== tmpDog Brain ===\n" << RESET << std::endl;
 		tmpDog.getBrain()->printIdeas();
 		std::cout << std::endl;
@@ -159,12 +163,26 @@ void	deepCopyTest2(void)
 	pressEnter();
 }
 
+void	subjectBasicTest()
+{
+	std::cout << GREEN << "\n=== Subject Test ===\n" << RESET << std::endl;
+	Dog dog;
+	{
+		Dog tmp = dog;
+	}
+	Cat	cat;
+	{
+		Cat tmp = cat;
+	}
+}
+
 int main()
 {
 	clearScreen();
-	deepCopyTest(); // Test OK
-	deepCopyTest2(); // Test OK
-	correctBrainOperations(); // Test OK
-	wrongBrainOpreations(); // Test OK
+	subjectBasicTest(); // Test OK OK
+	deepCopyTest(); // Test OK OK
+	deepCopyTest2(); // Test OK OK
+	correctBrainOperations(); // Test OK OK
+	wrongBrainOpreations(); // Test OK OK
 	return (0);
 }
