@@ -79,6 +79,7 @@ void MateriaSource::displaySource(void)
 	std::cout << "Current MateriaSource inventory:" << std::endl;
 	for (int i = 0; i < MAX_MATERIAS; i++)
 	{
-		std::cout << "At index : " << i << " " << _inv[i]->getType() << std::endl;
+		if (_inv[i])
+			std::cout << "At index : " << i << " " << _inv[i]->getType() << std::endl;
 	}
 }

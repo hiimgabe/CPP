@@ -5,121 +5,107 @@
 #include "../include/Ice.hpp"
 #include "../include/Cure.hpp"
 
+#define RESET "\033[0m"
+#define RED "\033[38;5;196m"
+#define GREEN "\033[38;5;47m"
+#define YELLOW "\033[38;5;226m"
 
-/*
-	"É p'ra amanhã
-	Bem podias fazer hoje" - not today tho, finishing tests tomorrow
-*/
-//void	deepCopySource(void)
-//{
-//	MateriaSource*	original = new MateriaSource();
-//	MateriaSource*	copy = new MateriaSource();
-//
-//	for (int i = 0; i < INV_SPACE; i++)
-//		original->learnMateria(new Ice());
-//	
-//}
-
-void	deepCopyCharacter(void)
+void	clearScreen(void)
 {
-	Character*	michael = new Character("Michael");
-	Character*	toby = new Character("Toby");
-	MateriaSource*	source = new MateriaSource();
-
-	source->learnMateria(new Ice());
-	for (int i = 0; i < INV_SPACE; i++)
-		michael->equip(source->createMateria("ice"));
-	std::cout << "Michael:" << std::endl;
-	michael->getInv();
-	std::cout << "Toby before:" << std::endl;
-	toby->getInv();
-	std::cout << "Tody after:" << std::endl;
-	*toby = *michael;
-	toby->getInv();
-	delete michael;
-	delete toby;
-	delete source;
+	std::cout << "\033c";
 }
 
-void	outOfBoundsCharacter(void)
+void	pressEnter(void)
 {
-	Character*	michael = new Character("Michael");
-	Character*	toby = new Character("Toby");
-	MateriaSource*	source = new MateriaSource();
-
-	source->learnMateria(new Ice());
-	source->learnMateria(new Cure());
-
-	for (int i = 0; i < 8; i++)
-	{
-		michael->equip(source->createMateria("ice"));
-		michael->use(i, *toby);
-	}
-	for (int i = 0; i < INV_SPACE; i++)
-		michael->unequip(i);
-	delete michael;
-	delete toby;
-	delete source;
-}
-
-void	outOfBoundsMateriaSource(void)
-{
-	MateriaSource* source = new MateriaSource();
-	source->learnMateria(new Ice());
-	source->learnMateria(new Cure());
-
-	AMateria* materia;
-	for (int i = 0; i < 6; i++)
-	{
-		materia = source->createMateria("ice");
-		source->learnMateria(materia);
-	}
-	source->displaySource();
-	MateriaCleaner::showList();
-
-	delete source;
+	std::cout << "\nPress Enter to continue. . ." << std::endl;
+	std::cin.get();
 }
 
 void	subjectTest(void)
 {
+	std::cout << YELLOW << "\n=== Creating MateriaSource ===\n" << RESET << std::endl;
 	IMateriaSource* src = new MateriaSource();
+	std::cout << YELLOW << "\n=== MateriaSource learns Materias ===\n" << RESET << std::endl;
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	ICharacter* me = new Character("me");
+	std::cout << YELLOW << "\n=== Creating Character ===\n" << RESET << std::endl;
+	ICharacter* tommy = new Character("Tommy");
+	std::cout << YELLOW << "\n=== Creating & equiping Materias ===\n" << RESET << std::endl;
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
-	me->equip(tmp);
+	tommy->equip(tmp);
 	tmp = src->createMateria("cure");
-	me->equip(tmp);
-
+	tommy->equip(tmp);
+	std::cout << YELLOW << "\n=== Creating target for Tommy ===\n" << RESET << std::endl;
 	ICharacter* bob = new Character("bob");
-	
-	me->use(0, *bob);
-	me->use(1, *bob);
-
+	std::cout << GREEN << "\n=== Tommy uses Materias on Bob ===\n" << RESET << std::endl;
+	tommy->use(0, *bob);
+	tommy->use(1, *bob);
+	std::cout << std::endl;
 	delete bob;
-	delete me;
+	delete tommy;
 	delete src;
+	pressEnter();
+}
+
+void	deepCharacterCopyTest()
+{
+	std::cout << YELLOW << "\n=== Creating MateriaSource & Character ===\n" << RESET << std::endl;
+	IMateriaSource	*src = new MateriaSource();
+	Character		*tommy = new Character("Tommy");
+	Character		*copy = new Character("Copy");
+	std::cout << YELLOW << "\n=== MateriaSource learns Materias ===\n" << RESET << std::endl;
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	std::cout << YELLOW << "\n=== MateriaSource creates Materias & Character equips ===\n" << RESET << std::endl;
+	AMateria	*mat;
+	mat = src->createMateria("ice");
+	tommy->equip(mat);
+	mat = src->createMateria("cure");
+	tommy->equip(mat);
+	std::cout << YELLOW << "\n=== Copy before ===\n" << RESET << std::endl;
+	copy->use(0, *copy);
+	copy->use(1, *copy);
+	*copy = *tommy;
+	std::cout << GREEN << "\n=== Original ===\n" << RESET << std::endl;
+	tommy->use(0, *copy);
+	tommy->use(1, *copy);
+	std::cout << GREEN << "\n=== Copy after ===\n" << RESET << std::endl;
+	copy->use(0, *copy);
+	copy->use(1, *copy);
+	std::cout << std::endl;
+	delete tommy;
+	delete src;
+	delete copy;
+	pressEnter();
+}
+
+void	deepMateriaCopyTest()
+{
+	MateriaSource	*original = new MateriaSource();
+	MateriaSource	*copy = new MateriaSource();
+
+	original->learnMateria(new Ice());
+	original->learnMateria(new Cure());
+	std::cout << GREEN << "\n=== Original inventory ===\n" << RESET << std::endl;
+	original->displaySource();
+	std::cout << YELLOW << "\n=== Copy inventory before ===\n" << RESET << std::endl;
+	copy->displaySource();
+	std::cout << std::endl;
+	*copy = *original;
+	std::cout << GREEN << "\n=== Copy inventory after ===\n" << RESET << std::endl;
+	copy->displaySource();
+	std::cout << std::endl;
+	delete original;
+	delete copy;
+	pressEnter();
 }
 
 int	main(void)
 {
-	subjectTest();
-	outOfBoundsMateriaSource();
-	outOfBoundsCharacter();
-	deepCopyCharacter();
-
-	AMateria* mat;
-	Character* bob = new Character("bob");
-	MateriaSource* source = new MateriaSource();
-
-	source->learnMateria(new Ice());
-	mat = source->createMateria("ice");
-	bob->equip(mat);
-
-	bob->getInv();
-
-	delete bob;
-	delete source;
+	clearScreen();
+	subjectTest(); // Test OK OK
+	deepCharacterCopyTest(); // Test OK OK
+	deepMateriaCopyTest(); // Test OK OK
 }
