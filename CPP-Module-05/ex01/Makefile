@@ -1,4 +1,4 @@
-NAME 	= Bureaucrat
+NAME 	= Form
 OBJ_DIR	= bin
 SRC_DIR	= source
 INC		= include/

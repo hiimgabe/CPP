@@ -3,12 +3,15 @@
 #define	BUREAUCRAT_H
 
 #include <iostream>
+#include "Form.hpp"
 
 #ifdef	DEBUG
 #define	LOG(str) std::cout << "LOG: " << str << std::endl;
 #else
 #define	LOG(str)
 #endif
+
+class Form;
 
 class Bureaucrat
 {
@@ -23,6 +26,7 @@ class Bureaucrat
 
 		std::string getName(void) const;
 		int	getGrade(void) const;
+		void	signForm(Form &form);
 
 		class	GradeTooHighException : public std::exception
 		{

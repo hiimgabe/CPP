@@ -1,7 +1,6 @@
 
 #include "../include/Bureaucrat.hpp"
 
-// OCF
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name), _grade(grade)
 {
@@ -32,7 +31,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 Bureaucrat::~Bureaucrat(void) { LOG("Bureaucrat Destructor called."); }
 
 
-// Member Functions
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
@@ -40,7 +38,6 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 	return (os);
 }
 
-// Getters
 
 int	Bureaucrat::getGrade(void) const { return (_grade); }
 
@@ -61,7 +58,6 @@ void	Bureaucrat::demote(void)
 }
 
 
-// Exceptions
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw() { return ("Grade is too high.");}
 
