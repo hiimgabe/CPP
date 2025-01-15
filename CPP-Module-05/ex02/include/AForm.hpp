@@ -21,13 +21,26 @@ class AForm
 		AForm &operator=(const AForm &aForm);
 		virtual ~AForm(void);
 
-		virtual void	execute(const Bureaucrat &executor) = 0;
+		void	beSigned(const Bureaucrat &bureaucrat);
+		//virtual void	execute(const Bureaucrat &executor) = 0;
+
+		std::string	getName(void) const;
+		int	getSignGrade(void) const;
+		int	getExecGrade(void) const;
+		bool	getIsSigned(void) const;
+
+		void	setName(const std::string &name);
+		void	setSignGrade(int signGrade);
+		void	setExecGrade(int execGrade);
+		void	setIsSigned(bool sign);
 
 	private:
-		const std::string	_name;
-		const int			_signGrade;
-		const int			_execGrade;
-		bool				_isSigned;
+		std::string	_name;
+		int			_signGrade;
+		int			_execGrade;
+		bool		_isSigned;
 };
+
+std::ostream &operator<<(std::ostream &os, AForm &form);
 
 #endif

@@ -12,13 +12,7 @@ class Shrubbery : public AForm
 		Shrubbery &operator=(const Shrubbery &other);
 		~Shrubbery(void);
 
-		void	execute(const Bureaucrat &executor);
-	
-	private:
-		const std::string	_name;
-		const int			_signGrade;
-		const int			_execGrade;
-		bool				_isSigned;
+		//void	execute(const Bureaucrat &executor);
 };
 
 #endif

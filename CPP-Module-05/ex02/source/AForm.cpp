@@ -18,3 +18,45 @@ AForm &AForm::operator=(const AForm &other)
 }
 
 AForm::~AForm(void) { LOG("AForm Destructor called."); }
+
+
+void	AForm::beSigned(const Bureaucrat &bureaucrat)
+{
+	if (bureaucrat.getGrade() > this->getSignGrade())
+		std::cout << "Fix this" << std::endl;//throw AForm::GradeTooLowException();
+	else
+		this->_isSigned = true;
+}
+
+// Getters Setters
+
+std::string AForm::getName(void) const { return (_name); }
+
+int	AForm::getSignGrade(void) const { return (_signGrade); }
+
+int	AForm::getExecGrade(void) const { return (_execGrade); }
+
+bool	AForm::getIsSigned(void) const { return (_isSigned); }
+
+void	AForm::setName(const std::string &name) { _name = name; }
+
+void	AForm::setSignGrade(int signGrade) { _signGrade = signGrade; }
+
+void	AForm::setExecGrade(int execGrade) { _execGrade = execGrade; }
+
+void	AForm::setIsSigned(bool sign) { _isSigned = sign; }
+
+
+// Operator Overloading
+
+std::ostream	&operator<<(std::ostream &os, AForm &form)
+{
+	std::string	sign = form.getIsSigned() ? "True" : "False";
+
+	os	<< "\nForm :" << form.getName()
+		<< "\nSign Grade: " << form.getSignGrade()
+		<< "\nExec Grade: " << form.getExecGrade()
+		<< "\nSigned : " << sign
+		<< std::endl;
+	return (os);
+}
