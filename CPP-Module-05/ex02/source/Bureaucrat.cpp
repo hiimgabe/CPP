@@ -32,7 +32,8 @@ Bureaucrat::~Bureaucrat(void) { LOG("Bureaucrat Destructor called."); }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
-	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
+	os	<< "\nBureaucrat: " << bureaucrat.getName()
+		<< "\nGrade: " << bureaucrat.getGrade() << std::endl;
 	return (os);
 }
 

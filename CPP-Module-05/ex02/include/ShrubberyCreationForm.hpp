@@ -25,7 +25,7 @@ class Shrubbery : public AForm
 		Shrubbery &operator=(const Shrubbery &other);
 		~Shrubbery(void);
 
-		virtual void	execute(void) const;
+		void	execute(void) const;
 	
 	private:
 		std::string	_target;

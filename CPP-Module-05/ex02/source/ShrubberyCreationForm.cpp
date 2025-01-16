@@ -33,5 +33,5 @@ void	Shrubbery::execute(void) const
 	file.open(shrubberyName.c_str());
 	file << TREE;
 	file.close();
-	std::cout << "HERE" << std::endl;
+	std::cout << shrubberyName + "_Shrubbery created succesfully" << std::endl;
 }

@@ -34,6 +34,18 @@ class AForm
 				const char *what(void) const throw();
 		};
 
+		class	GradeTooLowSignException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+
+		class	GradeTooLowExecuteException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+
 		class	FormSignException : public std::exception
 		{
 			public:

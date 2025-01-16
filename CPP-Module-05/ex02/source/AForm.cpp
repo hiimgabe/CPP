@@ -30,18 +30,21 @@ AForm::~AForm(void) { LOG("AForm Destructor called."); }
 void	AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->getSignGrade())
-		throw AForm::GradeTooLowException();
+		throw AForm::GradeTooLowSignException();
 	else
+	{
 		this->_isSigned = true;
+		std::cout << bureaucrat.getName() << " signed form: " << this->getName() << std::endl;
+	}
 }
 
 void	AForm::execute(const Bureaucrat &executor) const
 {
 	if (executor.getGrade() > _execGrade)
-		throw GradeTooLowException();
+		throw GradeTooLowExecuteException();
 	if (!this->_isSigned)
 		throw FormSignException();
-	std::cout << "\nExecuting form: " << this->_name << "\nBureaucrat: " << executor.getName() << std::endl;
+	std::cout << "Executing form: " << this->_name << "\nBureaucrat: " << executor.getName() << std::endl;
 	this->execute();
 }
 
@@ -58,10 +61,11 @@ void AForm::setIsSigned(bool sign) { _isSigned = sign; }
 
 
 
-std::ostream &operator<<(std::ostream &os, const AForm &form)
+std::ostream	&operator<<(std::ostream &os, const AForm &form)
 {
 	std::string	sign = form.getIsSigned() ? "True" : "False";
-	os	<< "AForm: " << form.getName()
+
+	os	<< "Form: " << form.getName()
 		<< "\nSign Grade: "<< form.getSignGrade()
 		<< "\nExec Grade: " << form.getExecGrade()
 		<< "\nSigned: " << sign << std::endl;
@@ -71,5 +75,9 @@ std::ostream &operator<<(std::ostream &os, const AForm &form)
 const char	*AForm::GradeTooHighException::what(void) const throw() { return ("Grade is too high."); }
 
 const char	*AForm::GradeTooLowException::what(void) const throw() { return ("Grade is too low."); }
+
+const char	*AForm::GradeTooLowSignException::what(void) const throw() { return ("Can't sign, grade is too low."); }
+
+const char	*AForm::GradeTooLowExecuteException::what(void) const throw() { return ("Can't execute, grade is too low."); }
 
 const char	*AForm::FormSignException::what(void) const throw() { return ("Form isn't signed."); }
