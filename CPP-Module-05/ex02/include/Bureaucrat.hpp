@@ -23,6 +23,7 @@ class Bureaucrat
 
 		void	promote(void);
 		void	demote(void);
+		void	executeForm(const AForm &form);
 
 		std::string getName(void) const;
 		int	getGrade(void) const;

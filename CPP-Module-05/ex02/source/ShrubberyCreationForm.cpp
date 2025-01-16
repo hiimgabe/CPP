@@ -1,17 +1,7 @@
 
 #include "../include/ShrubberyCreationForm.hpp"
 
-Shrubbery::Shrubbery(const std::string &target)
-{
-	LOG("Shrubbery Default Constructor called.");
-	AForm::setName("Shrubbery Form");
-	AForm::setSignGrade(145);
-	AForm::setExecGrade(137);
-	AForm::setIsSigned(false);
-	std::cout << "Creating <" << target << ">_Shrubbery." << std::endl;
-	// Continue here
-	// Creates a file <target>_Shrubbery with ASCII trees inside
-}
+Shrubbery::Shrubbery(const std::string &target): AForm("Shrubbery", 145, 137), _target(target) { LOG("Shrubbery Default Constructor called."); }
 
 Shrubbery::Shrubbery(const Shrubbery &other): AForm(other)
 {
@@ -24,12 +14,24 @@ Shrubbery &Shrubbery::operator=(const Shrubbery &other)
 	LOG("Shrubbery Assign Operator called.");
 	if (this != &other)
 	{
-		AForm::setName(other.getName());
-		AForm::setSignGrade(other.getSignGrade());
-		AForm::setExecGrade(other.getExecGrade());
-		AForm::setIsSigned(other.getIsSigned());
+		AForm::operator=(other);
+		_target = other._target;
 	}
 	return (*this);
 }
 
 Shrubbery::~Shrubbery(void) { LOG("Shrubbery Destructor called."); }
+
+
+// Member Functions
+
+void	Shrubbery::execute(void) const
+{
+	std::ofstream	file;
+	std::string		shrubberyName = _target + "_Shrubbery";
+
+	file.open(shrubberyName.c_str());
+	file << TREE;
+	file.close();
+	std::cout << "HERE" << std::endl;
+}

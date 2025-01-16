@@ -46,6 +46,6 @@ class Form
 		const int			_execGrade;
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &Form);
+std::ostream &operator<<(std::ostream &os, const Form &form);
 
 #endif

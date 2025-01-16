@@ -4,10 +4,13 @@
 
 int	main(void)
 {
-	Shrubbery	shrubb("Home");
+	AForm *shrubb = new Shrubbery("HOLYMOLY");
+	Bureaucrat	bur("Bob", 137);
 
-	shrubb.setIsSigned(true);
-	std::cout << shrubb;
+	bur.executeForm(*shrubb);
+	bur.signForm(*shrubb);
+	bur.executeForm(*shrubb);
+
 
 	return(0);
 }

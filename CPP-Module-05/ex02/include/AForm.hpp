@@ -1,14 +1,15 @@
 
-#ifndef	AFORM_H
-#define	AFORM_H
+#ifndef	FORM_H
+#define	FORM_H
 
 #include <iostream>
+#include <fstream>
 #include "Bureaucrat.hpp"
 
-#ifdef DEBUG
-#define LOG(str) std::cout << str << std::endl;
+#ifdef	DEBUG
+#define	LOG(str) std::cout << "LOG: " << str << std::endl;
 #else
-#define LOG(str)
+#define	LOG(str)
 #endif
 
 class Bureaucrat;
@@ -16,31 +17,47 @@ class Bureaucrat;
 class AForm
 {
 	public:
-		AForm(void);
-		AForm(const AForm &aForm);
-		AForm &operator=(const AForm &aForm);
+		AForm(const std::string &name, int signGrade, int execGrade);
+		AForm(const AForm &other);
+		AForm &operator=(const AForm &other);
 		virtual ~AForm(void);
+		
+		class	GradeTooHighException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+
+		class	GradeTooLowException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+
+		class	FormSignException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
 
 		void	beSigned(const Bureaucrat &bureaucrat);
-		//virtual void	execute(const Bureaucrat &executor) = 0;
+		void	execute(const Bureaucrat &executor) const;
+		virtual void	execute(void) const = 0;
 
-		std::string	getName(void) const;
+		std::string getName(void) const;
 		int	getSignGrade(void) const;
 		int	getExecGrade(void) const;
 		bool	getIsSigned(void) const;
 
-		void	setName(const std::string &name);
-		void	setSignGrade(int signGrade);
-		void	setExecGrade(int execGrade);
 		void	setIsSigned(bool sign);
 
 	private:
-		std::string	_name;
-		int			_signGrade;
-		int			_execGrade;
-		bool		_isSigned;
+		const std::string	_name;
+		bool				_isSigned;
+		const int			_signGrade;
+		const int			_execGrade;
 };
 
-std::ostream &operator<<(std::ostream &os, AForm &form);
+std::ostream &operator<<(std::ostream &os, const AForm &form);
 
 #endif
