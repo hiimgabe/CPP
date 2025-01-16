@@ -3,7 +3,6 @@
 #define	FORM_H
 
 #include <iostream>
-#include <fstream>
 #include "Bureaucrat.hpp"
 
 #ifdef	DEBUG

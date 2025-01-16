@@ -3,6 +3,8 @@
 #define	SHRUBBERY_H
 
 #include "AForm.hpp"
+#include <fstream>
+
 #define TREE "       ,.,\n" \
 "      MMMM_    ,..,\n" \
 "        \"_ \"__\"MMMMM          ,...,,\n" \
