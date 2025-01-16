@@ -17,13 +17,13 @@
 "   \\________________________/\n" \
 "   (_)                    (_)\n"
 
-class Shrubbery : public AForm
+class ShrubberyCreationForm : public AForm
 {
 	public:
-		Shrubbery(const std::string &target);
-		Shrubbery(const Shrubbery &other);
-		Shrubbery &operator=(const Shrubbery &other);
-		~Shrubbery(void);
+		ShrubberyCreationForm(const std::string &target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &other);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
+		~ShrubberyCreationForm(void);
 
 		void	execute(void) const;
 	

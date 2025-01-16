@@ -20,7 +20,7 @@ void	pressEnter(void)
 
 void	shrubberyTest()
 {
-	AForm	*shrubbery = new Shrubbery("Home");
+	AForm	*shrubbery = new ShrubberyCreationForm("Home");
 	Bureaucrat	bob("Bob", 146);
 
 	std::cout << "\n==== Using the following classes ====\n" << std::endl;

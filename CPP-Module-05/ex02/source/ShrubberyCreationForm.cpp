@@ -1,17 +1,17 @@
 
 #include "../include/ShrubberyCreationForm.hpp"
 
-Shrubbery::Shrubbery(const std::string &target): AForm("Shrubbery", 145, 137), _target(target) { LOG("Shrubbery Default Constructor called."); }
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): AForm("Shrubbery", 145, 137), _target(target) { LOG("ShrubberyCreationForm Default Constructor called."); }
 
-Shrubbery::Shrubbery(const Shrubbery &other): AForm(other)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other): AForm(other)
 {
-	LOG("Shrubbery Copy Constructor called.");
+	LOG("ShrubberyCreationForm Copy Constructor called.");
 	*this = other;
 }
 
-Shrubbery &Shrubbery::operator=(const Shrubbery &other)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	LOG("Shrubbery Assign Operator called.");
+	LOG("ShrubberyCreationForm Assign Operator called.");
 	if (this != &other)
 	{
 		AForm::operator=(other);
@@ -20,12 +20,12 @@ Shrubbery &Shrubbery::operator=(const Shrubbery &other)
 	return (*this);
 }
 
-Shrubbery::~Shrubbery(void) { LOG("Shrubbery Destructor called."); }
+ShrubberyCreationForm::~ShrubberyCreationForm(void) { LOG("ShrubberyCreationForm Destructor called."); }
 
 
 // Member Functions
 
-void	Shrubbery::execute(void) const
+void	ShrubberyCreationForm::execute(void) const
 {
 	std::ofstream	file;
 	std::string		shrubberyName = _target + "_Shrubbery";
