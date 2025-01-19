@@ -21,10 +21,32 @@ int	main(void)
 {
 	clearScreen();
 	Intern	veryImportantIntern;
-	AForm*	form;
+	AForm*	formCorrect[3];
+	AForm*	formError;
 
-	form = veryImportantIntern.makeForm("shrubbery form", "Home");
-	// TEST TEST TEST TEST
-	(void)form;
+	std::cout << "\n=== Correct forms creation ===\n" << std::endl;
+	try
+	{
+		formCorrect[0] = veryImportantIntern.makeForm("shrubbery form", "Home");
+		formCorrect[1] = veryImportantIntern.makeForm("robotomy form", "Neil");
+		formCorrect[2] = veryImportantIntern.makeForm("presidential form", "Bob");
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << "\n=== Incorrect forms creation ===\n" << std::endl;
+	try
+	{
+		formError = veryImportantIntern.makeForm("unkown form", "Bob");
+		(void)formError;
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	(void)formCorrect;
+	for (int i = 0; i < 3; i++)
+		delete formCorrect[i];
 	return(0);
 }

@@ -35,8 +35,13 @@ AForm*	Intern::makeForm(const std::string &formName, const std::string &target) 
 		"presidential form",
 	};
 	for (int i = 0; i < 3; i++)
+	{
 		if (forms[i] == formName)
+		{
+			std::cout << "Creating: " << forms[i] << "." << std::endl;
 			return((this->*formArray[i])(target));
+		}
+	}
 	throw Intern::internFormException();
 }
 
@@ -46,4 +51,4 @@ AForm*	Intern::makeRobotomyForm(const std::string &target) const { return (new R
 
 AForm*	Intern::makePresidentialForm(const std::string &target) const { return (new PresidentialPardonForm(target)); }
 
-const char	*Intern::internFormException::what(void) const throw() { return ("No such form."); }
+const char*	Intern::internFormException::what(void) const throw() { return ("No such form."); }

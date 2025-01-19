@@ -19,10 +19,10 @@ class Intern
 		AForm*	makeRobotomyForm(const std::string &target) const;
 		AForm*	makePresidentialForm(const std::string &target) const;
 
-		class	internFormException : std::exception
+		class	internFormException : public std::exception
 		{
 			public:
-				const char *what(void) const throw();
+				virtual const char *what(void) const throw();
 		};
 };
 
