@@ -17,7 +17,7 @@ void	formTest(void)
 	std::string	formName = "Form Test";
 	
 	std::cout << "==== 1st Test =====\n" << std::endl;
-	std::cout << "Creating form with signGrade < 0" << std::endl;
+	std::cout << "\n==== Creating form with signGrade < 0 ====\n" << std::endl;
 	try
 	{
 		Form gradeTooHigh(formName, 0, 2);
@@ -27,7 +27,7 @@ void	formTest(void)
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "Creating form with execGrade < 0" << std::endl;
+	std::cout << "\n==== Creating form with execGrade < 0 ====\n" << std::endl;
 	try
 	{
 		Form gradeTooHigh(formName, 2, 0);
@@ -37,7 +37,7 @@ void	formTest(void)
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "Creating form with signGrade > 150" << std::endl;
+	std::cout << "\n==== Creating form with signGrade > 150 ====\n" << std::endl;
 	try
 	{
 		Form gradeTooHigh(formName, 151, 2);
@@ -47,7 +47,7 @@ void	formTest(void)
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "Creating form with execGrade > 150" << std::endl;
+	std::cout << "\n==== Creating form with execGrade > 150 ====\n" << std::endl;
 	try
 	{
 		Form gradeTooHigh(formName, 2, 151);
@@ -57,7 +57,7 @@ void	formTest(void)
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "Correctly creating Form." << std::endl;
+	std::cout << "\n==== Correctly creating Form. ====\n" << std::endl;
 	try
 	{
 		Form	correct(formName, 5, 1);
@@ -103,7 +103,7 @@ void	signFormTest(void)
 int	main(void)
 {
 	clearScreen();
-	formTest(); // tests creation of forms
+	formTest();
 	signFormTest();
 	return(0);
 }

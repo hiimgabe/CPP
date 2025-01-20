@@ -39,6 +39,7 @@ class Form
 		int	getSignGrade(void) const;
 		int	getExecGrade(void) const;
 		bool	getIsSigned(void) const;
+
 	private:
 		const std::string	_name;
 		bool				_isSigned;

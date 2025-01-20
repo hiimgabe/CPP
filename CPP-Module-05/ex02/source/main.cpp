@@ -55,7 +55,7 @@ void	shrubberyTest()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 8; i++)
 		bob.promote();
 	std::cout << "\n==== Bureaucrat after stats after promotion ====\n" << std::endl;
 	std::cout << bob;
@@ -107,7 +107,7 @@ void	robotomizedTest()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	for (int i = 0; i < 28; i++)
+	for (int i = 0; i < 27; i++)
 		bob.promote();
 	std::cout << "\n==== Bureaucrat after stats after promotion ====\n" << std::endl;
 	std::cout << bob;

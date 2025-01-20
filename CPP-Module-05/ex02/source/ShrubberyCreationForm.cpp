@@ -33,5 +33,5 @@ void	ShrubberyCreationForm::execute(void) const
 	file.open(shrubberyName.c_str());
 	file << TREE;
 	file.close();
-	std::cout << shrubberyName + "_Shrubbery created succesfully" << std::endl;
+	std::cout << shrubberyName + " created succesfully" << std::endl;
 }
