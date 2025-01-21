@@ -60,10 +60,33 @@ void	ScalarConverter::specialConvertion(const std::string &value)
 	std::cout << "double: " << dValue << std::endl;
 }
 
-//void	ScalarConverter::normalConvertion(const std::string &value)
-//{
-//
-//}
+bool	ScalarConverter::valueIsChar(const std::string &value)
+{
+	return (value.length() == 1 && ((value[0] >= 33 && value[0] <= 47 ) || (value[0] >= 58 && value[0] <= 126)));
+}
+
+bool	ScalarConverter::valueIsInt(const std::string &value) { return (isOnlyDigit(value)); }
+
+bool	ScalarConverter::isOnlyDigit(const std::string &value)
+{
+	size_t sign = 0;
+	if (value[0] == '-' || value[0] == '+')
+		sign++;
+	for (size_t i =+ sign; i < value.length(); i++)
+		if (!isdigit(value[i]))
+			return (false);
+	return (true);
+}
+
+void	ScalarConverter::standardConvertion(const std::string &value)
+{
+	if (valueIsChar(value))
+		std::cout << value << " is a char" << std::endl;
+	else if (valueIsInt(value))
+		std::cout << value << " is a int" << std::endl;
+	else
+		std::cout << value << " is tolo" << std::endl;
+}
 
 void	ScalarConverter::convert(const std::string &value)
 {
@@ -71,6 +94,6 @@ void	ScalarConverter::convert(const std::string &value)
 	if (isSpecialValue(value))
 		specialConvertion(value);
 	else
-		std::cout << "Is not a special value" << std::endl;
+		standardConvertion(value);
 }
 

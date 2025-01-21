@@ -29,7 +29,12 @@ class ScalarConverter
 		static bool	isSpecialValue(const std::string &value);
 
 		static void	specialConvertion(const std::string &value);
-		//void	normalConvertion(const std::string &value);
+		static void	standardConvertion(const std::string &value);
+
+		static bool	valueIsChar(const std::string &value);
+
+		static bool	valueIsInt(const std::string &value);
+		static bool	isOnlyDigit(const std::string &value);
 
 		static float	floatSpecialConvertion(const std::string &value);
 		static double	doubleSpecialConvertion(const std::string &value);
