@@ -70,12 +70,27 @@ bool	ScalarConverter::valueIsInt(const std::string &value) { return (isOnlyDigit
 bool	ScalarConverter::isOnlyDigit(const std::string &value)
 {
 	size_t sign = 0;
+
 	if (value[0] == '-' || value[0] == '+')
 		sign++;
-	for (size_t i =+ sign; i < value.length(); i++)
+	for (size_t i = sign; i < value.length(); i++)
 		if (!isdigit(value[i]))
 			return (false);
 	return (true);
+}
+
+bool	ScalarConverter::valueIsDouble(const std::string &value)
+{
+	size_t		sign = 0;
+	std::string	split[2];
+
+	if (value[0] == '-' || value[0] == '+')
+		sign++;
+	if (validDot(value) == 1)
+	{
+		size_t dotPos = value.find('.');
+		split[0] = value.substr(0, dotPos);
+	}
 }
 
 void	ScalarConverter::standardConvertion(const std::string &value)

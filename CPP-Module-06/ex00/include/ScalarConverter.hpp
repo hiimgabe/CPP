@@ -21,11 +21,6 @@ class ScalarConverter
 		ScalarConverter &operator=(const ScalarConverter &other);
 		~ScalarConverter(void);
 
-		//char	convertToChar(const std::string &value);
-		//int	convertToInt(const std::string &value);
-		//float	convertToFloat(const std::string &value);
-		//double	convertToDouble(const std::string &value);
-
 		static bool	isSpecialValue(const std::string &value);
 
 		static void	specialConvertion(const std::string &value);
@@ -35,6 +30,9 @@ class ScalarConverter
 
 		static bool	valueIsInt(const std::string &value);
 		static bool	isOnlyDigit(const std::string &value);
+
+		static bool valueIsDouble(const std::string &value);
+		static int	validDot(const std::string &value);
 
 		static float	floatSpecialConvertion(const std::string &value);
 		static double	doubleSpecialConvertion(const std::string &value);
