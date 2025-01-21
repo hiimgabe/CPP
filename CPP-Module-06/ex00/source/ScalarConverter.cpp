@@ -67,7 +67,7 @@ bool	ScalarConverter::valueIsChar(const std::string &value)
 
 bool	ScalarConverter::valueIsInt(const std::string &value) { return (isOnlyDigit(value)); }
 
-bool	ScalarConverter::isOnlyDigit(const std::string &value)
+bool	ScalarConverter::isNumber(const std::string &value)
 {
 	size_t sign = 0;
 
@@ -86,11 +86,46 @@ bool	ScalarConverter::valueIsDouble(const std::string &value)
 
 	if (value[0] == '-' || value[0] == '+')
 		sign++;
-	if (validDot(value) == 1)
+	if (validDot(value))
 	{
-		size_t dotPos = value.find('.');
+		size_t	dotPos = value.find('.');
 		split[0] = value.substr(0, dotPos);
+		split[1] = value.substr(dotPos + 1);
+		if (isNumber(split[0]) && isOnlyDigit(split[1]))
+			return (true);
 	}
+	return (false);
+}
+
+bool	ScalarConverter::isOnlyDigit(const std::string &value)
+{
+	for (size_t i = 0; i < value.length(); i++)
+		if (!isdigit(value[i]))
+			return (false);
+	return (true);
+}
+
+bool	ScalarConverter::validDot(const std::string &value)
+{
+	int			dotCount = 0;
+	std::string	split[2];
+
+	for (size_t i = 0; i < value.length(); i++)
+	{
+		if (value[i] == '.')
+			dotCount++;
+		if (dotCount > 1)
+			return (false);
+	}
+	size_t	dotPos = value.find('.');
+	if (dotPos != std::string::npos)
+	{
+		split[0] = value.substr(0, dotPos);
+		split[1] = value.substr(dotPos + 1);
+		if (split[0].empty() || split[1].empty())
+			return (false);
+	}
+	return (true);
 }
 
 void	ScalarConverter::standardConvertion(const std::string &value)
@@ -99,6 +134,8 @@ void	ScalarConverter::standardConvertion(const std::string &value)
 		std::cout << value << " is a char" << std::endl;
 	else if (valueIsInt(value))
 		std::cout << value << " is a int" << std::endl;
+	else if (valueIsDouble(value))
+		std::cout << value << " is a double" << std::endl;
 	else
 		std::cout << value << " is tolo" << std::endl;
 }
