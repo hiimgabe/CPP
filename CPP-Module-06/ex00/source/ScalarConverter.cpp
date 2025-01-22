@@ -18,7 +18,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 ScalarConverter::~ScalarConverter(void) { LOG("ScalarConverter Default Destructor called."); }
 
-bool	ScalarConverter::isSpecialValue(const std::string &value)
+bool	ScalarConverter::isSpecialValue(std::string &value)
 {
 	if (value == "nan" || value == "nanf"
 		|| value == "-inf" || value == "+inf" || value == "inf"
@@ -27,7 +27,7 @@ bool	ScalarConverter::isSpecialValue(const std::string &value)
 	return (false);
 }
 
-float	ScalarConverter::floatSpecialConvertion(const std::string &value)
+float	ScalarConverter::floatSpecialConvertion(std::string &value)
 {
 	if (value == "nan" || value == "nanf")
 		return (std::numeric_limits<float>::quiet_NaN());
@@ -38,7 +38,7 @@ float	ScalarConverter::floatSpecialConvertion(const std::string &value)
 	return (std::strtof(value.c_str(), NULL));
 }
 
-double	ScalarConverter::doubleSpecialConvertion(const std::string &value)
+double	ScalarConverter::doubleSpecialConvertion(std::string &value)
 {
 	if (value == "nan" || value == "nanf")
 		return (std::numeric_limits<double>::quiet_NaN());
@@ -49,7 +49,7 @@ double	ScalarConverter::doubleSpecialConvertion(const std::string &value)
 	return (std::strtod(value.c_str(), NULL));
 }
 
-void	ScalarConverter::specialConvertion(const std::string &value)
+void	ScalarConverter::specialConvertion(std::string &value)
 {
 	float	fValue = floatSpecialConvertion(value);
 	double	dValue = doubleSpecialConvertion(value);
@@ -60,14 +60,14 @@ void	ScalarConverter::specialConvertion(const std::string &value)
 	std::cout << "double: " << dValue << std::endl;
 }
 
-bool	ScalarConverter::valueIsChar(const std::string &value)
+bool	ScalarConverter::valueIsChar(std::string &value)
 {
 	return (value.length() == 1 && ((value[0] >= 33 && value[0] <= 47 ) || (value[0] >= 58 && value[0] <= 126)));
 }
 
-bool	ScalarConverter::valueIsInt(const std::string &value) { return (isOnlyDigit(value)); }
+bool	ScalarConverter::valueIsInt(std::string &value) { return (isNumber(value)); }
 
-bool	ScalarConverter::isNumber(const std::string &value)
+bool	ScalarConverter::isNumber(std::string &value)
 {
 	size_t sign = 0;
 
@@ -79,7 +79,7 @@ bool	ScalarConverter::isNumber(const std::string &value)
 	return (true);
 }
 
-bool	ScalarConverter::valueIsDouble(const std::string &value)
+bool	ScalarConverter::valueIsDouble(std::string &value)
 {
 	size_t		sign = 0;
 	std::string	split[2];
@@ -97,7 +97,7 @@ bool	ScalarConverter::valueIsDouble(const std::string &value)
 	return (false);
 }
 
-bool	ScalarConverter::isOnlyDigit(const std::string &value)
+bool	ScalarConverter::isOnlyDigit(std::string &value)
 {
 	for (size_t i = 0; i < value.length(); i++)
 		if (!isdigit(value[i]))
@@ -105,7 +105,7 @@ bool	ScalarConverter::isOnlyDigit(const std::string &value)
 	return (true);
 }
 
-bool	ScalarConverter::validDot(const std::string &value)
+bool	ScalarConverter::validDot(std::string &value)
 {
 	int			dotCount = 0;
 	std::string	split[2];
@@ -128,7 +128,7 @@ bool	ScalarConverter::validDot(const std::string &value)
 	return (true);
 }
 
-bool	ScalarConverter::valueIsFloat(const std::string &value)
+bool	ScalarConverter::valueIsFloat(std::string &value)
 {
 	std::string	split[2];
 	
@@ -143,7 +143,7 @@ bool	ScalarConverter::valueIsFloat(const std::string &value)
 	return (false);
 }
 
-bool	ScalarConverter::isFloatEnd(const std::string &value)
+bool	ScalarConverter::isFloatEnd(std::string &value)
 {
 	if (!isdigit(value[0]))
 		return (false);
@@ -155,26 +155,107 @@ bool	ScalarConverter::isFloatEnd(const std::string &value)
 	return (false);
 }
 
-void	ScalarConverter::standardConvertion(const std::string &value)
+void	ScalarConverter::convertFromChar(std::string &value)
 {
-	if (valueIsChar(value))
-		std::cout << value << " is a char" << std::endl;
-	else if (valueIsInt(value))
-		std::cout << value << " is a int" << std::endl;
-	else if (valueIsDouble(value))
-		std::cout << value << " is a double" << std::endl;
-	else if (valueIsFloat(value))
-		std::cout << value << " is a float" << std::endl;
-	else
-		std::cout << value << " is tolo" << std::endl;
+	char	c = value[0];
+	int		i = static_cast<int>(c);
+	float	f = static_cast<float>(c);
+	double	d = static_cast<double>(c);
+
+	ScalarConverter::printConvertion(c, i, f, d);
 }
 
-void	ScalarConverter::convert(const std::string &value)
+void	ScalarConverter::convertFromInt(std::string &value)
 {
-	std::cout << "Converting : " << value << std::endl;
+	int		i = atoi(value.c_str());
+	char	c = static_cast<unsigned char>(i);
+	float	f = static_cast<float>(i);
+	double	d = static_cast<double>(i);
+
+	ScalarConverter::printConvertion(c, i, f, d);
+}
+
+void	ScalarConverter::convertFromFloat(std::string &value)
+{
+	float	f = atof(value.c_str());
+	int		i = static_cast<int>(f);
+	char	c = static_cast<unsigned char>(f);
+	double	d = static_cast<double>(f);
+
+	ScalarConverter::printConvertion(c, i, f, d);
+}
+
+void	ScalarConverter::convertFromDouble(std::string &value)
+{
+	double	d = strtod(value.c_str(), NULL);
+	float	f = static_cast<float>(d);
+	int		i = static_cast<int>(d);
+	char	c = static_cast<unsigned char>(d);
+
+	ScalarConverter::printConvertion(c, i, f, d);
+}
+
+bool	ScalarConverter::isDisplayable(int i) { return (i >= 32 && i <= 126); }
+
+void	ScalarConverter::printIntOverflow(std::string &value)
+{
+	std::cout << "char: Overflows" << std::endl;
+	std::cout << "int: Overflows" << std::endl;
+	std::cout << "float: " << strtof(value.c_str(), NULL) << "f" << std::endl;
+	std::cout << "double: " << strtod(value.c_str(), NULL) << std::endl;
+}
+
+void	ScalarConverter::printConvertion(char c, int i, float f, double d)
+{
+	// Check non-displayable [0-32] 127
+	// chars from range 0-32 and 127
+	//
+	// Check Overflows
+	// chars < 0 || chars > 127 
+	// int > MAX_INT || int < MIN_INT
+	//
+	if (i > 127 || i < -128)
+		std::cout << "char: Overflows" << std::endl;
+	else
+	{
+		if (!isDisplayable(i))
+			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: " << c << std::endl;
+	}
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+}
+
+void	ScalarConverter::standardConvertion(std::string &value)
+{
+	double	overflowCheck = strtod(value.c_str(), NULL);
+
+	if (overflowCheck > INT_MAX || overflowCheck < INT_MIN)
+	{
+		ScalarConverter::printIntOverflow(value);
+		return ;
+	}
+	if (valueIsChar(value))
+		ScalarConverter::convertFromChar(value);
+	else if (valueIsInt(value))
+		ScalarConverter::convertFromInt(value);
+	else if (valueIsDouble(value))
+		ScalarConverter::convertFromDouble(value);
+	else if (valueIsFloat(value))
+		ScalarConverter::convertFromFloat(value);
+	else
+		throw ConvertionImpossible();
+}
+
+void	ScalarConverter::convert(std::string &value)
+{
+	std::cout << "Converting : " << value << '\n' << std::endl;
 	if (isSpecialValue(value))
 		specialConvertion(value);
 	else
 		standardConvertion(value);
 }
 
+const char	*ScalarConverter::ConvertionImpossible::what(void) const throw() { return ("Impossible to convert."); }
