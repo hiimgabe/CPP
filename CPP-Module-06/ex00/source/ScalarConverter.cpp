@@ -128,6 +128,33 @@ bool	ScalarConverter::validDot(const std::string &value)
 	return (true);
 }
 
+bool	ScalarConverter::valueIsFloat(const std::string &value)
+{
+	std::string	split[2];
+	
+	if (validDot(value))
+	{
+		size_t	dotPos = value.find('.');
+		split[0] = value.substr(0, dotPos);
+		split[1] = value.substr(dotPos + 1);
+		if (isNumber(split[0]) && isFloatEnd(split[1]))
+			return (true);
+	}
+	return (false);
+}
+
+bool	ScalarConverter::isFloatEnd(const std::string &value)
+{
+	if (!isdigit(value[0]))
+		return (false);
+	for (size_t i = 0; i < value.length() - 1; i++)
+		if (!isdigit(value[i]))
+			return (false);
+	if (value[value.length() - 1] == 'f')
+		return (true);
+	return (false);
+}
+
 void	ScalarConverter::standardConvertion(const std::string &value)
 {
 	if (valueIsChar(value))
@@ -136,6 +163,8 @@ void	ScalarConverter::standardConvertion(const std::string &value)
 		std::cout << value << " is a int" << std::endl;
 	else if (valueIsDouble(value))
 		std::cout << value << " is a double" << std::endl;
+	else if (valueIsFloat(value))
+		std::cout << value << " is a float" << std::endl;
 	else
 		std::cout << value << " is tolo" << std::endl;
 }

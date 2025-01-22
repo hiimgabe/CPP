@@ -35,6 +35,9 @@ class ScalarConverter
 		static bool valueIsDouble(const std::string &value);
 		static bool	validDot(const std::string &value);
 
+		static bool valueIsFloat(const std::string &value);
+		static bool isFloatEnd(const std::string &value);
+
 		static float	floatSpecialConvertion(const std::string &value);
 		static double	doubleSpecialConvertion(const std::string &value);
 
