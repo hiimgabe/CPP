@@ -7,11 +7,9 @@
 template	<typename T>
 void	swap(T &a, T &b)
 {
-	std::cout << "\nbefore\na: " << a << "\nb: " << b << std::endl;
 	T	tmp = a;
 	a = b;
 	b = tmp;
-	std::cout << "after\na: " << a << "\nb: " << b << "\n" << std::endl;
 }
 
 template	<typename T>
