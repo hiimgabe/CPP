@@ -69,7 +69,19 @@ void	demotion()
 		std::cerr << e.what() << '\n';
 	}
 }
-
+/**
+ * @brief Entry point of the program.
+ *
+ * This function demonstrates various operations related to a Bureaucrat class.
+ * It includes the following operations:
+ * - normalBureaucrat: Creates a Bureaucrat with normal grade.
+ * - gradeTooHigh: Attempts to create a Bureaucrat with a grade that is too high.
+ * - gradeTooLow: Attempts to create a Bureaucrat with a grade that is too low.
+ * - promotion: Tries to promote a Bureaucrat with the max grade.
+ * - demotion: Tries to demote a Bureaucrat with the min grade.
+ *
+ * @return int Returns 0 upon successful execution.
+ */
 int	main(void)
 {
 	normalBureaucrat();

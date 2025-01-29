@@ -32,6 +32,11 @@ template <class T> class Array
 			const char *what(void) const throw();
 		};
 
+		class invalidSizeException : public std::exception
+		{
+			const char *what(void) const throw();
+		};
+
 	private:
 		T				*_array;
 		unsigned int	_size;
