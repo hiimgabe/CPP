@@ -1,4 +1,25 @@
-
+/**
+ * 
+ * @brief This file contains the main function and test functions for the Bureaucrat and Form classes.
+ * 
+ * The main function clears the screen, runs form tests, and runs form signing tests.
+ * 
+ * Functions:
+ * - formTest(): Tests the creation of Form objects with various grades and handles exceptions.
+ * - signFormTest(): Tests the signing of Form objects by a Bureaucrat and handles exceptions.
+ * 
+ * The formTest() function tests:
+ * - Creating a form with a signGrade less than 0.
+ * - Creating a form with an execGrade less than 0.
+ * - Creating a form with a signGrade greater than 150.
+ * - Creating a form with an execGrade greater than 150.
+ * - Correctly creating a Form object.
+ * 
+ * The signFormTest() function tests:
+ * - A Bureaucrat trying to sign a Form with insufficient grade.
+ * - Promoting the Bureaucrat and trying to sign the Form again.
+ * 
+ */
 #include "../include/Bureaucrat.hpp"
 
 void	clearScreen(void)
@@ -93,6 +114,7 @@ void	signFormTest(void)
 	try
 	{
 		bob.signForm(testForm);
+		std::cout << testForm << std::endl;
 	}
 	catch(const std::exception &e)
 	{

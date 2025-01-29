@@ -1,11 +1,6 @@
 
 #include "../include/Intern.hpp"
 
-#define RESET "\033[0m"
-#define RED "\033[38;5;196m"
-#define GREEN "\033[38;5;47m"
-#define YELLOW "\033[38;5;226m"
-
 void	clearScreen(void)
 {
 	std::cout << "\033c";
@@ -17,6 +12,21 @@ void	pressEnter(void)
 	std::cin.get();
 }
 
+/**
+ * @brief
+ * 
+ * This function demonstrates the creation of various forms using an Intern object.
+ * It attempts to create three correct forms and one incorrect form, handling any exceptions
+ * that may occur during the form creation process.
+ * 
+ * The correct forms created are:
+ * - Shrubbery form
+ * - Robotomy form
+ * - Presidential form
+ * 
+ * The incorrect form creation attempts to create an unknown form type.
+ * 
+ */
 int	main(void)
 {
 	clearScreen();
@@ -45,7 +55,6 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	(void)formCorrect;
 	for (int i = 0; i < 3; i++)
 		delete formCorrect[i];
 	return(0);
