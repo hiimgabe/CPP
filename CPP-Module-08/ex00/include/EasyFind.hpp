@@ -4,7 +4,6 @@
 
 #include <algorithm>
 #include <iostream>
-#include <vector>
 
 class	NoSuchValue : public std::exception
 {
