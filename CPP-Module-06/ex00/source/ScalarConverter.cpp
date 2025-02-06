@@ -73,6 +73,8 @@ bool	ScalarConverter::isNumber(std::string &value)
 
 	if (value[0] == '-' || value[0] == '+')
 		sign++;
+	if (sign >= 1 && value.length() == 1)
+		return (false);
 	for (size_t i = sign; i < value.length(); i++)
 		if (!isdigit(value[i]))
 			return (false);
@@ -117,6 +119,8 @@ bool	ScalarConverter::validDot(std::string &value)
 		if (dotCount > 1)
 			return (false);
 	}
+	if (dotCount < 1)
+		return (false);
 	size_t	dotPos = value.find('.');
 	if (dotPos != std::string::npos)
 	{
@@ -157,6 +161,7 @@ bool	ScalarConverter::isFloatEnd(std::string &value)
 
 void	ScalarConverter::convertFromChar(std::string &value)
 {
+	LOG("Converting " + value + " from char.");
 	char	c = value[0];
 	int		i = static_cast<int>(c);
 	float	f = static_cast<float>(c);
@@ -167,6 +172,7 @@ void	ScalarConverter::convertFromChar(std::string &value)
 
 void	ScalarConverter::convertFromInt(std::string &value)
 {
+	LOG("Converting " + value + " from int.");
 	int		i = atoi(value.c_str());
 	char	c = static_cast<unsigned char>(i);
 	float	f = static_cast<float>(i);
@@ -177,6 +183,13 @@ void	ScalarConverter::convertFromInt(std::string &value)
 
 void	ScalarConverter::convertFromFloat(std::string &value)
 {
+	double	overflowCheck = strtod(value.c_str(), NULL);
+	if (overflowCheck < INT_MIN || overflowCheck > INT_MAX)
+	{
+		printIntOverflow(value);
+		return ;
+	}
+	LOG("Converting " + value + " from float.");
 	float	f = atof(value.c_str());
 	int		i = static_cast<int>(f);
 	char	c = static_cast<unsigned char>(f);
@@ -187,6 +200,13 @@ void	ScalarConverter::convertFromFloat(std::string &value)
 
 void	ScalarConverter::convertFromDouble(std::string &value)
 {
+	double	overflowCheck = strtod(value.c_str(), NULL);
+	if (overflowCheck < INT_MIN || overflowCheck > INT_MAX)
+	{
+		printIntOverflow(value);
+		return ;
+	}
+	LOG("Converting " + value + " from double.");
 	double	d = strtod(value.c_str(), NULL);
 	float	f = static_cast<float>(d);
 	int		i = static_cast<int>(d);
@@ -199,6 +219,7 @@ bool	ScalarConverter::isDisplayable(int i) { return (i >= 32 && i <= 126); }
 
 void	ScalarConverter::printIntOverflow(std::string &value)
 {
+	LOG("Converting " + value + " from intOverflow");
 	std::cout << "char: Overflows" << std::endl;
 	std::cout << "int: Overflows" << std::endl;
 	std::cout << "float: " << strtof(value.c_str(), NULL) << "f" << std::endl;
@@ -207,13 +228,6 @@ void	ScalarConverter::printIntOverflow(std::string &value)
 
 void	ScalarConverter::printConvertion(char c, int i, float f, double d)
 {
-	// Check non-displayable [0-32] 127
-	// chars from range 0-32 and 127
-	//
-	// Check Overflows
-	// chars < 0 || chars > 127 
-	// int > MAX_INT || int < MIN_INT
-	//
 	if (i > 127 || i < -128)
 		std::cout << "char: Overflows" << std::endl;
 	else
@@ -232,19 +246,28 @@ void	ScalarConverter::standardConvertion(std::string &value)
 {
 	double	overflowCheck = strtod(value.c_str(), NULL);
 
-	if (overflowCheck > INT_MAX || overflowCheck < INT_MIN)
+	if (valueIsChar(value))
 	{
-		ScalarConverter::printIntOverflow(value);
+		ScalarConverter::convertFromChar(value);
+		return;
+	}
+	else if (valueIsInt(value) && overflowCheck > INT_MIN && overflowCheck < INT_MAX)
+	{
+		ScalarConverter::convertFromInt(value);
 		return ;
 	}
-	if (valueIsChar(value))
-		ScalarConverter::convertFromChar(value);
-	else if (valueIsInt(value))
-		ScalarConverter::convertFromInt(value);
 	else if (valueIsDouble(value))
+	{
 		ScalarConverter::convertFromDouble(value);
+		return ;
+	}
 	else if (valueIsFloat(value))
+	{
 		ScalarConverter::convertFromFloat(value);
+		return ;
+	}
+	else if ((overflowCheck > INT_MAX || overflowCheck < INT_MIN) && valueIsInt(value))
+		ScalarConverter::printIntOverflow(value);
 	else
 		throw ConvertionImpossible();
 }
