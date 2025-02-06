@@ -6,6 +6,12 @@
 #include <cstdlib>
 #include <ctime>
 
+/*
+*	dynamic_cast
+*	used for safe casting in classes hierarchies
+*	works only with polymorphic classes
+*/
+
 class Base
 {
 	public:

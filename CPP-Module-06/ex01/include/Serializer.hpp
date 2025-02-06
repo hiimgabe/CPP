@@ -12,6 +12,11 @@
 #define LOG(str)
 #endif
 
+/*
+*	reinterpret_cast
+*	converts between unrelated types
+*/
+
 class Serializer
 {
 	private:

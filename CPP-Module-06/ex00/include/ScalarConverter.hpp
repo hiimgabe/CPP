@@ -15,6 +15,11 @@
 #define LOG(str)
 #endif
 
+/*
+*	static_cast
+*	converts related types
+*/
+
 class ScalarConverter
 {
 	private:
