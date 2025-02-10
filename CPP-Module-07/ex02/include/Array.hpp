@@ -13,11 +13,6 @@
 template <class T> class Array
 {
 	public:
-	// No param Constructor - creates empty array
-	// unsigned int n Constructor - creates array of size n
-	// copy assignment operator 
-	// outOfBoundsException
-	// size_t	size();
 		Array(void);
 		Array(unsigned int n);
 		Array(const Array &other);

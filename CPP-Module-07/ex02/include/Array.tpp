@@ -11,11 +11,6 @@ template <class T> Array<T>::Array(void)
 template <class T> Array<T>::Array(unsigned int n)
 {
 	LOG("Array unsigned int Constructor called.");
-	//int	nInt = n;
-	//bool	test = 0 > nInt ? true : false;
-	//std::cout << "unsigned int : " << test << std::endl;
-	//if (0 > n)
-	//	throw invalidSizeException();
 	this->_array = new T[n];
 	this->_size = n;
 	for (unsigned int i = 0; i < this->_size; i++)
