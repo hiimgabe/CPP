@@ -3,6 +3,7 @@
 #define	ARRAY_HPP
 
 #include <iostream>
+#include <cstring>
 
 #ifdef DEBUG
 #define LOG(str) std::cout << str << std::endl;

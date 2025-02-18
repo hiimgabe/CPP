@@ -17,7 +17,7 @@ template <class T> Array<T>::Array(unsigned int n)
 		this->_array[i] = 0;
 }
 
-template <class T> Array<T>::Array(const Array &other)
+template <class T> Array<T>::Array(const Array &other): _size(other.size())
 {
 	LOG("Array Copy Constructor called.");
 	this->_array = NULL;
@@ -32,9 +32,7 @@ template <class T> Array<T> &Array<T>::operator=(const Array &other)
 		if (this->_array != NULL)
 			delete[] (this->_array);
 		this->_array = new T[other._size];
-		this->_size = other._size;
-		for (unsigned int i = 0; i < other._size; i++)
-			this->_array[i] = other._array[i];
+		memcpy(this->_array, other._array, this->_size);
 	}
 	return (*this);
 }
