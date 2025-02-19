@@ -2,6 +2,7 @@
 #include "../include/MutantStack.hpp"
 #include <iostream>
 #include <stack>
+#include <vector>
 
 int	main()
 {
