@@ -1,4 +1,5 @@
 
+#include "../include/BitcoinExchange.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -7,28 +8,10 @@
 #include <ctime>
 #include <time.h>
 
-std::time_t	strToTime(const std::string &date)
+
+int	main(int argc, char **argv)
 {
-	std::tm	tm = {};
-	int	y, m, d;
-
-
-	if (sscanf(date.c_str(), "%4d-%2d-%2d", &y, &m, &d) != 3)
-		std::cout << "Invalid date." << date << std::endl;
-	else
-	{
-		//std::cout << "valid date " << y << "-" << m << "-" << d << std::endl;
-		tm.tm_year = y - 1900;
-		tm.tm_mon = m - 1;
-		tm.tm_mday = d;
-	}
-//	converts std::tm to std::time_t in "time since epoch"
-	return (mktime(&tm));
-}
-
-int	main(void)
-{
-	std::ifstream	file;
+/*	std::ifstream	file;
 	std::string	buffer;
 	std::map<std::time_t, float>	content;
 	std::pair<std::time_t, float>	curr;
@@ -40,6 +23,7 @@ int	main(void)
 	else
 		std::cout << "file success" << std::endl;
 	std::getline(file, buffer);
+	//std::cout << "first line" << buffer << std::endl;
 //	read and save file into map
 	while (std::getline(file, buffer))
 	{
@@ -53,13 +37,33 @@ int	main(void)
 
 //	time_t to str
 	std::map<std::time_t, float>::iterator	it;
-	for (it = content.begin(); it != content.end(); ++it)
-	{
+	//for (it = content.begin(); it != content.end(); ++it)
+	//{
+		it = content.begin();
 		std::tm	*tmp = std::localtime(&it->first);
 		char	tmpBuff[20];
 		std::strftime(tmpBuff, sizeof(tmpBuff), "%Y-%m-%d", tmp);
-		std::cout << tmpBuff << ": " << it->second << std::endl;
+		std::cout << tmpBuff << std::endl;
+	//}
+
+	//std::string	test1 = "2012-12-11,0.21";
+	//std::string	test2 = "2012-12-11 | 1";
+//
+	//std::time_t t1 = strToTime(test1.substr(0, test1.find(',')));
+	//std::time_t t2 = strToTime(test2.substr(0, test2.find('|')));
+//
+	//std::cout << "t1: " << t1 << "\nt2: " << t2 << std::endl;
+	//std::string	rest1 = timeToStr(t1);
+	//std::string	rest2 = timeToStr(t2);
+	//std::cout << "rest1: " << rest1 << "\nrest2: " << rest2 << std::endl;
+*/
+	if (argc == 2)
+	{
+		Bitcoin btc(argv[1]);
+		btc.runBitcoin();
 	}
+	else
+		std::cerr << "Error: correct usage: ./btc <input.txt>" << std::endl;
 
 	return (0);
 }
