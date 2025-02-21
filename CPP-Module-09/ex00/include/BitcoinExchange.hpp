@@ -8,8 +8,10 @@
 #include <ctime>
 #include <cstdlib>
 
+#define	LOG_ERR(str) std::cerr << str << std::endl
+
 #ifdef DEBUG
-#define LOG(str) std::cout << str << std::endl;
+#define LOG(str) std::cout << str << std::endl
 #else
 #define LOG(str)
 #endif
@@ -28,6 +30,13 @@ class Bitcoin
 		std::string	timeToStr(const std::time_t &time);
 
 		void	runBitcoin();
+		void	runInput(const std::pair<std::string, std::string> &input);
+
+		bool	checkDate(const std::string &date);
+		bool	checkValue(float value);
+		bool	checkValueNb(const std::string &str);
+		bool	isOnlySpace(const std::string &str);
+		std::time_t	getBtValue(const std::string &date);
 
 	private:
 		std::map<std::time_t, float>	_db;
