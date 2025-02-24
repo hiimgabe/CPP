@@ -1,9 +1,9 @@
 NAME 	= span
 OBJ_DIR	= bin
-SRC_DIR	= source
+SRC_DIR	= source/
 INC		= include/
-SRC 	= ${wildcard ${SRC_DIR}/*.cpp}
-OBJ 	= ${patsubst ${SRC_DIR}/%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
+SRC 	= ${SRC_DIR}Span.cpp ${SRC_DIR}main.cpp
+OBJ 	= ${patsubst ${SRC_DIR}%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
@@ -18,7 +18,7 @@ ifeq ($(MODE), debug)
 	FLAGS += -D DEBUG
 endif
 
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp | ${OBJ_DIR}
+${OBJ_DIR}/%.o: ${SRC_DIR}%.cpp | ${OBJ_DIR}
 	@c++ ${FLAGS} -g -c $< -o $@
 	@echo "[${GREEN}compiling${END}]: $<"
 

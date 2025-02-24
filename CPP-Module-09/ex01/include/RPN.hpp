@@ -19,7 +19,7 @@ class RPN
 		~RPN(void);
 
 		void	startRPN(void);
-		void	parseString(void);
+		bool	parseString(void);
 		void	operate(void);
 		bool	checkString(void);
 		bool	isDigit(const std::string &str);

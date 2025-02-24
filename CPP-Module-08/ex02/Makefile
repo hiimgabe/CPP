@@ -1,8 +1,8 @@
 NAME 	= stack
 OBJ_DIR	= bin
-SRC_DIR	= source
+SRC_DIR	= source/
 INC		= include/
-SRC 	= ${wildcard ${SRC_DIR}/*.cpp}
+SRC 	= ${SRC_DIR}main.cpp
 OBJ 	= ${patsubst ${SRC_DIR}/%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
@@ -12,7 +12,7 @@ YELLOW	= \033[38;5;226m
 RED		= \033[38;5;196m
 END 	= \033[0m
 
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp | ${OBJ_DIR}
+${OBJ_DIR}/%.o: ${SRC_DIR}%.cpp | ${OBJ_DIR}
 	@c++ ${FLAGS} -g -c $< -o $@
 	@echo "[${GREEN}compiling${END}]: $<"
 

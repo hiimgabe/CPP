@@ -41,34 +41,52 @@ bool	RPN::isDigit(const std::string &str)
 
 bool	RPN::checkString(void)
 {
+	int	digitCnt = 0;
+	int	operatorCnt = 0;
+	std::string	curr;
 	std::list<std::string>::iterator	it;
 	for(it = _list.begin(); it != _list.end(); ++it)
 	{
 		if (it->size() > 1 || !isDigit(*it))
 			return (false);
+		curr = *it;
+		for (size_t i = 0; i < curr.size(); i++)
+		{
+			if (isdigit(curr[i]))
+				digitCnt++;
+			if (isOperator(curr[i]))
+				operatorCnt++;
+		}
 	}
-	//check if string has x numbers && x-1 operators
-	return (true);
+	if (operatorCnt == (digitCnt - 1))
+		return (true);
+	return (false);
 }
 
-void	RPN::parseString(void)
+bool	RPN::parseString(void)
 {
 	std::istringstream	iss(_str);
 	std::string	token;
 	while (iss >> token)
 		this->_list.push_back(token);
 	if (!checkString())
-		{return (LOG_ERR("Invalid operation."), void());}
-		std::list<std::string>::iterator	it;
-	for (it = _list.begin(); it != _list.end(); ++it)
-		std::cout << *it << std::endl;
+		return (false);
+	return (true);
 }
 
 void	RPN::operate(void)
-{}
+{
+	std::list<std::string>::iterator	it;
+	std::cout << "Operating on: " << std::endl;
+	//for (it = _list.begin(); it != _list.end(); ++it)
+	//{
+	//	
+	//}
+}
 
 void	RPN::startRPN(void)
 {
-	parseString();
+	if (!parseString())
+		return(LOG_ERR("Invalid operation."), void());
 	operate();
 }
