@@ -85,7 +85,8 @@ void	RPN::operate(void)
 		//std::cout << "currStr		: " << currStr << "\ncurrStr[0]	: " << currStr[0] << std::endl;
 		if (isOperator(currStr[0]) && currStr.size() == 1)
 		{
-			//std::cout << "entered operator: " << currStr[0] << std::endl;
+			if (res.size() < 2)
+				return (LOG_ERR("Error"), void());
 			int	b = res.top();
 			res.pop();
 			int	a = res.top();

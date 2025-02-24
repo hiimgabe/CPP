@@ -2,7 +2,7 @@ NAME 	= span
 OBJ_DIR	= bin
 SRC_DIR	= source/
 INC		= include/
-SRC 	= ${SRC_DIR}Span.cpp ${SRC_DIR}main.cpp
+SRC 	= ${shell find ${SRC_DIR} -name '*.cpp'}
 OBJ 	= ${patsubst ${SRC_DIR}%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
