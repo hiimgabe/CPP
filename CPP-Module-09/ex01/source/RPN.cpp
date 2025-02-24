@@ -77,16 +77,45 @@ bool	RPN::parseString(void)
 void	RPN::operate(void)
 {
 	std::list<std::string>::iterator	it;
-	std::cout << "Operating on: " << std::endl;
-	//for (it = _list.begin(); it != _list.end(); ++it)
-	//{
-	//	
-	//}
+	std::string	currStr;
+	std::stack<int>	res;
+	for (it = _list.begin(); it != _list.end(); ++it)
+	{
+		currStr = *it;
+		//std::cout << "currStr		: " << currStr << "\ncurrStr[0]	: " << currStr[0] << std::endl;
+		if (isOperator(currStr[0]) && currStr.size() == 1)
+		{
+			//std::cout << "entered operator: " << currStr[0] << std::endl;
+			int	b = res.top();
+			res.pop();
+			int	a = res.top();
+			res.pop();
+			switch(currStr[0])
+			{
+				case '+': res.push(a + b);
+					break;
+				case '-': res.push(a - b);
+					break;
+				case '*': res.push(a * b);
+					break;
+				case '/': res.push(a / b);
+					break;
+			}
+		}
+		else
+		{
+			std::stringstream	ss(currStr);
+			int	currInt;
+			ss >> currInt;
+			res.push(currInt);
+		}
+	}
+	std::cout << res.top() << std::endl;
 }
 
 void	RPN::startRPN(void)
 {
 	if (!parseString())
-		return(LOG_ERR("Invalid operation."), void());
+		return(LOG_ERR("Error"), void());
 	operate();
 }

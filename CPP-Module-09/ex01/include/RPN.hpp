@@ -3,7 +3,9 @@
 #define	RPN_HPP
 
 #include <iostream>
+#include <stdlib.h>
 #include <list>
+#include <stack>
 #include <cstdlib>
 #include <sstream>
 
