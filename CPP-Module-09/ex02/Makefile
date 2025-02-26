@@ -2,7 +2,7 @@ NAME 	= PmergeMe
 OBJ_DIR	= bin
 SRC_DIR	= source/
 INC		= include/
-SRC 	= ${shell find ${SRC_DIR} -name '*.cpp'}
+SRC 	= ${addprefix ${SRC_DIR}, main.cpp PmergeMe.cpp}
 OBJ 	= ${patsubst ${SRC_DIR}%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
