@@ -2,7 +2,7 @@ NAME 	= array
 OBJ_DIR	= bin
 SRC_DIR	= source/
 INC		= include/
-SRC 	= ${addprefix ${SRC_DIR}, main.cpp}
+SRC 	= ${addprefix ${SRC_DIR}, tMain.cpp}
 OBJ 	= ${patsubst ${SRC_DIR}%.cpp, ${OBJ_DIR}/%.o, ${SRC}}
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98

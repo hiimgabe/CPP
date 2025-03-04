@@ -32,7 +32,8 @@ template <class T> Array<T> &Array<T>::operator=(const Array &other)
 		if (this->_array != NULL)
 			delete[] (this->_array);
 		this->_array = new T[other._size];
-		memcpy(this->_array, other._array, this->_size);
+		memcpy(this->_array, other._array, other._size * sizeof(T));
+		this->_size = other._size;
 	}
 	return (*this);
 }
