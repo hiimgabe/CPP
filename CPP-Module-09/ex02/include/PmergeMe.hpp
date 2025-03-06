@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <sys/time.h>
 #include <cstdlib>
 #include <sstream>
 #include <vector>
@@ -37,6 +38,12 @@ class PmergeMe
 
 		template <typename T>
 		T secondHalf(T container);
+
+		class InvalidInput : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
 	
 	private:
 		PmergeMe(void);
