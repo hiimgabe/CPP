@@ -3,8 +3,13 @@
 #define	PMERGEME_HPP
 
 #include <iostream>
+#include <algorithm>
+#include <cstdlib>
+#include <sstream>
 #include <vector>
 #include <deque>
+
+#define INT_MAX 2147483647
 
 class PmergeMe
 {
@@ -14,11 +19,12 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe &rhs);
 		~PmergeMe(void);
 
-		void	fillContainers(const std::string &input);
-
 		void	pmergeme();
 
 		bool	checkInput();
+		bool	checkInputChar();
+		bool	checkInputTokens();
+		bool	isNumber(const std::string &str);
 
 		template <typename T>
 		T	mergeSort(T container);
@@ -26,11 +32,17 @@ class PmergeMe
 		template <typename T>
 		T	merge(T a, T b);
 
+		template <typename T>
+		T firstHalf(T container);
+
+		template <typename T>
+		T secondHalf(T container);
 	
 	private:
 		PmergeMe(void);
-		std::vector<int>	vecA;
-		std::deque<int>		deqA;
+		std::vector<int>	_vec;
+		std::deque<int>		_deq;
+		std::string			_input;
 		
 };
 
