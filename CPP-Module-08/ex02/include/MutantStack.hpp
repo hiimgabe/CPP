@@ -4,8 +4,6 @@
 
 #include <iostream>
 #include <stack>
-
-
 /*
 	template declaration
 

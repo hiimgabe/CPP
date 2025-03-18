@@ -1,6 +1,23 @@
 
 #include "../include/Span.hpp"
 
+/*
+	- std::sort
+		usage: sorts the Span
+	
+	- std::min_element
+	- std::max_element
+		usage: getting the max or min value of the Span
+	
+	- std::rand
+	- std::srand
+	- std::time
+		usage: rand() used to help fill Span, srand() and time() used to get random numbers
+
+	- std::generate
+		usage: to fill a Span with random numbers
+*/
+
 Span::Span(void)
 {
 	LOG("Span Default Constructor called.");
