@@ -8,7 +8,7 @@
 class	NoSuchValue : public std::exception
 {
 	public:
-		const char *what() const throw() { return ("Number not found."); }
+		const char *what() const throw() { return ("Value not found."); }
 };
 
 template <typename T>

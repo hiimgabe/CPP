@@ -40,11 +40,7 @@ void	Span::addNumber(int n)
 	if (_v.size() < _size)
 		_v.push_back(n);
 	else
-	{
-		std::cout << "HELOO" << std::endl;
 		throw SpanFull();
-	}
-
 }
 
 int	Span::shortestSpan(void)
@@ -70,3 +66,16 @@ int	Span::longestSpan(void)
 	int	max = *std::max_element(_v.begin(), _v.end());
 	return (max - min);
 }
+
+static int	getRandom() { return(std::rand() % 100000); }
+
+void	Span::fill()
+{
+	_v.resize(_size);
+	std::srand(std::time(0));
+	std::generate(_v.begin(), _v.end(), getRandom);
+}
+
+int	Span::max() const { return(*(std::max_element(_v.begin(), _v.end()))); }
+
+int	Span::min() const { return(*(std::min_element(_v.begin(), _v.end()))); }

@@ -1,6 +1,17 @@
 
 #include "../include/Span.hpp"
 
+void	clearScreen(void)
+{
+	std::cout << "\033c";
+}
+
+void	pressEnter(void)
+{
+	std::cout << "\nPress Enter to continue. . ." << std::endl;
+	std::cin.get();
+}
+
 void	subjectTest(void)
 {
 	Span	sp = Span(5);
@@ -17,10 +28,18 @@ void	myTest(void)
 {
 	Span	test = Span(100001);
 
-	for (int i = 0; i < 100001; i++)
-		test.addNumber(i);
-	std::cout << test.shortestSpan() << std::endl;
-	std::cout << test.longestSpan() << std::endl;
+	try
+	{
+		for (int i = 0; i < 100001; i++)
+			test.addNumber(i);
+		std::cout << "Shortest span : " << test.shortestSpan() << std::endl;
+		std::cout << "Longest span : " << test.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }
 
 void	secondTest(void)
@@ -55,10 +74,37 @@ void	secondTest(void)
 	}
 }
 
+void	fill()
+{
+	Span	fillT = Span(10000);
+
+	try
+	{
+		fillT.fill();
+		std::cout << "Max number : " << fillT.max() << std::endl;
+		std::cout << "Min number : " << fillT.min() << std::endl;
+		std::cout << "Shortest span	: " << fillT.shortestSpan() << std::endl;
+		std::cout << "Longest span	: " << fillT.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
 int main(void)
 {
 	subjectTest();
+	pressEnter();
+	clearScreen();
 	myTest();
+	pressEnter();
+	clearScreen();
 	secondTest();
+	pressEnter();
+	clearScreen();
+	fill();
+	pressEnter();
+	clearScreen();
 	return (0);
 }

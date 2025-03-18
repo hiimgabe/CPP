@@ -5,6 +5,8 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <climits>
 
 #ifdef DEBUG
@@ -23,8 +25,12 @@ class Span
 		~Span(void);
 
 		void	addNumber(int n);
+		void	fill();
 		int	shortestSpan(void);
 		int	longestSpan(void);
+
+		int	max() const;
+		int	min() const;
 
 		class NoSpan : public std::exception
 		{
