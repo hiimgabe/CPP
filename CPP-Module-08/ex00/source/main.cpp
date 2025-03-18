@@ -16,7 +16,7 @@ void	intTest()
 		std::cout << "Checking for: 10\t" << find(intVector, 10) << std::endl;
 		std::cout << "Checking for: 3\t\t" << find(intVector, 3) << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
