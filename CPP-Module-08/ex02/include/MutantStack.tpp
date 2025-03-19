@@ -34,3 +34,39 @@ typename C::iterator	MutantStack<T, C>::end(void)
 {
 	return (this->c.end());
 }
+
+template<typename T, typename C>
+typename C::reverse_iterator	MutantStack<T, C>::rbegin(void)
+{
+	return (this->c.rbegin());
+}
+
+template<typename T, typename C>
+typename C::reverse_iterator	MutantStack<T, C>::rend(void)
+{
+	return (this->c.rend());
+}
+
+template<typename T, typename C>
+typename C::const_iterator	MutantStack<T, C>::cbegin(void)
+{
+	return (this->c.cbegin());
+}
+
+template<typename T, typename C>
+typename C::const_iterator	MutantStack<T, C>::cend(void)
+{
+	return (this->c.cend());
+}
+
+template<typename T, typename C>
+typename C::const_reverse_iterator	MutantStack<T, C>::crbegin(void)
+{
+	return (this->c.crbegin());
+}
+
+template<typename T, typename C>
+typename C::const_reverse_iterator	MutantStack<T, C>::crend(void)
+{
+	return (this->c.crend());
+}

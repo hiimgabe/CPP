@@ -95,15 +95,43 @@ void	subjectVectorTest()
 	}
 }
 
+void	reverseIteratorMutantStack()
+{
+	MutantStack<int>	mstack;
+
+	mstack.push(2);
+	mstack.push(22);
+	mstack.push(52);
+	mstack.push(43);
+
+	MutantStack<int>::reverse_iterator it = mstack.rbegin();
+	MutantStack<int>::reverse_iterator ite = mstack.rend();
+
+
+	std::cout << "\n==== MutantStack reverse_iterator ====\n\n";
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+}
+
 int	main()
 {
-	std::cout << "\n==== Subject Test with MutantStack, std::list and std::vector ====\n\n"; 
-	std::cout << "==== MutantStack ====\n\n";
-	subjectTest();
-	std::cout << "\n==== std::list ====\n\n";
-	subjectListTest();
-	std::cout << "\n==== std::vector ====\n\n";
-	subjectVectorTest();
+	//std::cout << "\n==== Subject Test with MutantStack, std::list and std::vector ====\n\n"; 
+	//std::cout << "==== MutantStack ====\n\n";
+	//subjectTest();
+	//std::cout << "\n==== std::list ====\n\n";
+	//subjectListTest();
+	//std::cout << "\n==== std::vector ====\n\n";
+	//subjectVectorTest();
+
+	// reverse iterator
+	reverseIteratorMutantStack();
+
+	// const iterator
+
+	// reverse const iterator
 
 	return (0);
 }
