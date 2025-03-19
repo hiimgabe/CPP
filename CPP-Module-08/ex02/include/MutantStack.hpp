@@ -32,11 +32,11 @@ class MutantStack : public std::stack<T, C>
 		reverse_iterator	rbegin(void);
 		reverse_iterator	rend(void);
 
-		const_iterator	cbegin(void);
-		const_iterator	cend(void);
+		const_iterator	begin(void) const;
+		const_iterator	end(void) const;
 
-		const_reverse_iterator	crbegin(void);
-		const_reverse_iterator	crend(void);
+		const_reverse_iterator	rbegin(void) const;
+		const_reverse_iterator	rend(void) const;
 };
 
 #include "MutantStack.tpp"
