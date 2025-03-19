@@ -54,6 +54,8 @@ Span::~Span(void)
 
 void	Span::addNumber(int n)
 {
+	if (n < 0)
+		throw NegativeValue();
 	if (_v.size() < _size)
 		_v.push_back(n);
 	else
@@ -96,3 +98,18 @@ void	Span::fill()
 int	Span::max() const { return(*(std::max_element(_v.begin(), _v.end()))); }
 
 int	Span::min() const { return(*(std::min_element(_v.begin(), _v.end()))); }
+
+const char	*Span::NoSpan::what() const throw()
+{
+	return ("Invalid Span.");
+}
+
+const char	*Span::SpanFull::what() const throw()
+{
+	return ("Can't add more numbers, Span is full.");
+}
+
+const char	*Span::NegativeValue::what() const throw()
+{
+	return ("Negative numbers not allowed.");
+}

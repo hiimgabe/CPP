@@ -35,13 +35,19 @@ class Span
 		class NoSpan : public std::exception
 		{
 			public:
-				const char *what() const throw() { return ("Invalid span."); }
+				const char *what() const throw();
 		};
 
 		class SpanFull : public std::exception
 		{
 			public:
-				const char *what() const throw() { return ("Can't add more numbers, Span is full."); }
+				const char *what() const throw();
+		};
+
+		class NegativeValue : public std::exception
+		{
+			public:
+				const char *what() const throw();
 		};
 
 
