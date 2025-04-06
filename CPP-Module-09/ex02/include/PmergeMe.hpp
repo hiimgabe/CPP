@@ -28,16 +28,10 @@ class PmergeMe
 		bool	isNumber(const std::string &str);
 
 		template <typename T>
-		T	mergeSort(T container);
+		void	mergeInsertion(T &container);
 
 		template <typename T>
-		T	merge(T a, T b);
-
-		template <typename T>
-		T firstHalf(T container);
-
-		template <typename T>
-		T secondHalf(T container);
+		void	PmergeMe::jacobInsertion(T low, T high, T leftOver);
 
 		class InvalidInput : public std::exception
 		{
