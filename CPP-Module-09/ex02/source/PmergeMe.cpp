@@ -19,11 +19,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &rhs)
 PmergeMe::PmergeMe(const std::string &input): _input(input)
 {
 	if (!checkInput())
-	{
 		throw InvalidInput();
-	}
-	else
-		std::cout << "Valid input." << std::endl;
 }
 
 PmergeMe::~PmergeMe(void)
@@ -104,47 +100,68 @@ bool	PmergeMe::checkInput()
 
 void	PmergeMe::pmergeme()
 {
-	std::vector<int>	vecRes;
-	std::deque<int>		deqRes;
 	struct	timeval	start, end;
+	std::vector<int>	vecBefore = _vec;
+	std::deque<int>	deqBefore = _deq;
 
 	gettimeofday(&start, NULL);
-	vecRes = mergeInsertion(_vec);
+	mergeInsertionVec(_vec);
 	gettimeofday(&end, NULL);
 	double	vecDuration = (end.tv_sec - start.tv_sec) * 1000000L + (end.tv_usec - start.tv_usec);
 
 	gettimeofday(&start, NULL);
-	deqRes = mergeInsertion(_deq);
+	mergeInsertionDeq(_deq);
 	gettimeofday(&end, NULL);
 	double	deqDuration = (end.tv_sec - start.tv_sec) * 1000000L + (end.tv_usec - start.tv_usec);
 	
-	std::cout << "Before:";
+	std::cout << "std::vector before:";
+	for (std::vector<int>::iterator it = vecBefore.begin(); it != vecBefore.end(); ++it)
+		std::cout << " " << *it;
+	std::cout << '\n';
+	std::cout << "std::vector after :";
 	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); ++it)
 		std::cout << " " << *it;
-	std::cout << std::endl;
-	std::cout << "After :";
-	for (std::deque<int>::iterator it = deqRes.begin(); it != deqRes.end(); ++it)
+	std::cout << "\n\n";
+	std::cout << "std::deque before:";
+	for (std::deque<int>::iterator it = deqBefore.begin(); it != deqBefore.end(); ++it)
 		std::cout << " " << *it;
-	std::cout << std::endl;
+	std::cout << '\n';
+	std::cout << "std::deque after :";
+	for (std::deque<int>::iterator it = _deq.begin(); it != _deq.end(); ++it)
+		std::cout << " " << *it;
+	std::cout << "\n\n";
 	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << vecDuration <<" us" << std::endl;
 	std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque : " << deqDuration <<" us" << std::endl;
 }
 
-template <typename T>
 static void	sortPair(std::pair<int, int> &pair)
 {
-	if (pair->first > pair->second)
-		std::swap(pair->first, pair->second);
+	if (pair.first > pair.second)
+		std::swap(pair.first, pair.second);
 }
 
-template <typename T>
-void	PmergeMe::mergeInsertion(T &container)
+static std::vector<size_t>	jacobGenerate(size_t size)
+{
+	std::vector<size_t>	res;
+
+	res.push_back(0);
+	if (size == 0)
+		return (res);
+	res.push_back(1);
+	if (size == 1)
+		return (res);
+	for(size_t i = 0; res.back() < size ; i++)
+		res.push_back(res[res.size() - 1] + 2 * res[res.size() - 2]);
+	return (res);
+}
+
+void	PmergeMe::mergeInsertionVec(std::vector<int> &container)
 {
 	if (container.size() <= 1)
 		return ;
 	// pair
-	std::T<std::pair<int, int>>	pairs;
-	std::T<int>	leftOver;
+	std::vector<std::pair<int, int> >	pairs;
+	std::vector<int>	leftOver;
 
 	for (size_t i = 0; i < container.size(); i += 2)
 	{
@@ -157,30 +174,125 @@ void	PmergeMe::mergeInsertion(T &container)
 		else
 		{
 			leftOver.clear();
-			leftOver.push_back(vec[i]);
+			leftOver.push_back(container[i]);
 		}
 	}
 	// split pairs
-	std::T<int>	low;
-	std::T<int>	high;
-	std::T<std::pair<int, int> >::iterator	it = pair.begin();
-	for (;it != pair.end(); ++it)
+	std::vector<int>	low;
+	std::vector<int>	high;
+	std::vector<std::pair<int, int> >::iterator	it;
+	for (it = pairs.begin() ;it != pairs.end(); ++it)
 	{
-		low.push_pack(it->first);
-		high.push_pack(it->second);
+		low.push_back(it->first);
+		high.push_back(it->second);
 	}
 	// recursion
-	mergeInsertion(high);
+	mergeInsertionVec(high);
 	// insert
-	jacobInsertion(low, high, leftOver);
+	jacobInsertionVec(low, high, leftOver);
+	container.clear();
+	container = low;
 }
 
-template <typename T>
-void	PmergeMe::jacobInsertion(T low, T high, T leftOver)
+// low	:	lower values, or the values that will be inserted into high
+//			also our main container
+//
+// high	:	higher values
+//
+// leftOver	:	the last value in case of a container having and odd number of elements
+void	PmergeMe::jacobInsertionVec(std::vector<int> &low, const std::vector<int> &high, std::vector<int> leftOver)
 {
 	// check leftover
+	std::vector<size_t>	jacob;
+	std::vector<int>	merge;
+	merge = high;
+	if (!leftOver.empty())
+	{
+		low.push_back(leftOver.back());
+		leftOver.pop_back();
+	}
 	// generate jacobsthal sequence - n = n-1 + (2 * (n - 2))
+	jacob = jacobGenerate(low.size());
 	// insert according to the sequence
+	for (size_t i = 1; i < jacob.size(); i++)
+	{
+		for (size_t j = jacob[i]; j > jacob[i - 1]; j--)
+		{
+			if (j <= low.size())
+			{
+				std::vector<int>::iterator	pos = std::lower_bound(merge.begin(), merge.end(), low[j - 1]);
+				merge.insert(pos, low[j - 1]);
+			}
+		}
+	}
+	low = merge;
+}
+
+void	PmergeMe::mergeInsertionDeq(std::deque<int> &container)
+{
+	if (container.size() <= 1)
+		return ;
+	// pair
+	std::deque<std::pair<int, int> >	pairs;
+	std::deque<int>	leftOver;
+
+	for (size_t i = 0; i < container.size(); i += 2)
+	{
+		if (i + 1 < container.size())
+		{
+			std::pair<int, int>	tmpPair = std::make_pair(container[i], container[i + 1]);
+			sortPair(tmpPair);
+			pairs.push_back(tmpPair);
+		}
+		else
+		{
+			leftOver.clear();
+			leftOver.push_back(container[i]);
+		}
+	}
+	// split pairs
+	std::deque<int>	low;
+	std::deque<int>	high;
+	std::deque<std::pair<int, int> >::iterator	it = pairs.begin();
+	for (;it != pairs.end(); ++it)
+	{
+		low.push_back(it->first);
+		high.push_back(it->second);
+	}
+	// recursion
+	mergeInsertionDeq(high);
+	// insert
+	jacobInsertionDeq(low, high, leftOver);
+	container.clear();
+	container = low;
+}
+
+void	PmergeMe::jacobInsertionDeq(std::deque<int> &low, const std::deque<int> &high, std::deque<int> leftOver)
+{
+	// check leftover
+	std::vector<size_t>	jacob;
+	std::deque<int>	merge;
+	merge = high;
+	if (!leftOver.empty())
+	{
+		low.push_back(leftOver.back());
+		leftOver.pop_back();
+	}
+	// generate jacobsthal sequence - n = n-1 + (2 * (n - 2))
+	jacob = jacobGenerate(low.size());
+	// insert according to the sequence
+	for (size_t i = 1; i < jacob.size(); i++)
+	{
+		for (size_t j = jacob[i]; j > jacob[i - 1]; j--)
+		{
+			if (j <= low.size())
+			{
+				std::deque<int>::iterator	pos = std::lower_bound(merge.begin(), merge.end(), low[j - 1]);
+				merge.insert(pos, low[j - 1]);
+			}
+		}
+	}
+	low = merge;
 }
 
 const char *PmergeMe::InvalidInput::what(void) const throw() { return("Invalid input."); }

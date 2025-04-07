@@ -27,11 +27,11 @@ class PmergeMe
 		bool	checkInputTokens();
 		bool	isNumber(const std::string &str);
 
-		template <typename T>
-		void	mergeInsertion(T &container);
+		void	mergeInsertionVec(std::vector<int> &container);
+		void	jacobInsertionVec(std::vector<int> &low, const std::vector<int> &high, std::vector<int> leftOver);
 
-		template <typename T>
-		void	PmergeMe::jacobInsertion(T low, T high, T leftOver);
+		void	mergeInsertionDeq(std::deque<int> &container);
+		void	jacobInsertionDeq(std::deque<int> &low, const std::deque<int> &high, std::deque<int> leftOver);
 
 		class InvalidInput : public std::exception
 		{
