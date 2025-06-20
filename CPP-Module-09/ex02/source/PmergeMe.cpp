@@ -130,8 +130,9 @@ void	PmergeMe::pmergeme()
 	for (std::deque<int>::iterator it = _deq.begin(); it != _deq.end(); ++it)
 		std::cout << " " << *it;
 	std::cout << "\n\n";
-	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << vecDuration <<" us" << std::endl;
-	std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque : " << deqDuration <<" us" << std::endl;
+	std::cout << std::fixed << std::setprecision(5);
+	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << vecDuration / 1000000.0 <<" us" << std::endl;
+	std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque : " << deqDuration / 1000000.0 <<" us" << std::endl;
 }
 
 static void	sortPair(std::pair<int, int> &pair)
