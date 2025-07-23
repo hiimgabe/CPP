@@ -39,7 +39,7 @@ class Bitcoin
 		std::time_t	getBtValue(const std::string &date);
 
 	private:
-		std::map<std::time_t, float>	_db;
+		std::map<std::time_t, float>	_db;// key-value pairs with unique keys aka unique dates(keys) 
 		std::string	_file;
 		
 };
