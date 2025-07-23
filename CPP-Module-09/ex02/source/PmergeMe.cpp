@@ -214,7 +214,7 @@ void	PmergeMe::jacobInsertionVec(std::vector<int> &low, const std::vector<int> &
 	}
 	// generate jacobsthal sequence - n = n-1 + (2 * (n - 2))
 	jacob = jacobGenerate(low.size());
-	// insert according to the sequence
+	// go through the numbers and insert where it can between j[i] and j[i - 1]
 	for (size_t i = 1; i < jacob.size(); i++)
 	{
 		for (size_t j = jacob[i]; j > jacob[i - 1]; j--)
